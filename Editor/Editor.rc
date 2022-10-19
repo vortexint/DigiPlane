@@ -1,0 +1,12 @@
+#include <windows.h>
+#define IDC_STATIC -1
+
+100 ICON "DigiPlane.ico"
+
+10 MENU
+{		// or BEGIN
+ POPUP "&File"
+ {
+  MENUITEM "&Exit",IDCANCEL
+ }
+}		// or END
