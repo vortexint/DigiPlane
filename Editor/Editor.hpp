@@ -1,51 +1,37 @@
-/**
- * @file Editor.hpp
- * @brief file responsible for editor functionality declarations
- */
-
 #ifndef EDITOR_HPP
 #define EDITOR_HPP
 
-#include "tweeny-3.2.0.h"
 #include <iostream>
 #include <string>
 
-// Data containers //
+// This is the engine, without this, there will be no engine...  As an added bonus, you'll
+// get compiler error "LNK2005: main already defined in main.obj" if you touch this
+// I'm warning you, don't touch this
+#include "all_include.hpp"
 
-// The Component class, which is the base class for all components, e.g. Transform, Camera, SpriteRenderer, etc.
-// This class is used to store the data for each component, and to be able to iterate over all components in a scene
-class Component
+
+namespace DigiPlane::Editor
 {
-    // private:
-    std::string name;
-    std::string type;
+    // Application class is responsible for handling the engine data, initialization, and everything else
 
-public:
-    Component(std::string name, std::string type);
-    std::string getName();
-    std::string getType();
-};
+    class Application {
+    private:
+        SDL_Window* window;
+        SDL_Renderer* renderer;
+        SDL_GLContext gl_context;
+        struct nk_context *ctx;
+        bool is_running;
 
-class SceneState
-{
-    // private:
-    std::vector<Component> components;
-public:
-    SceneState(); // constructor
-    void addComponent(Component component);
-    std::vector<Component> getComponents();
-};
+    public:
+        Application (void);
+        ~Application(void);
 
-#endif
+        void Initialize( char* windowTitle );
+        bool getRunning(void) { return is_running; }
 
-// Editor Specific //
+    };
 
-/**
- * @brief The Editor class is the base class for the editor, it is responsible for handling editor data & functionality.
- * The Editor Class most noticeably contains variables for selected objects, and the sceneState object.
- */
-class Editor
-{
-    // private:
-    
-};
+} // namespace Digiplane::Editor
+
+#endif // EDITOR_HPP
+

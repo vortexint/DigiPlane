@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(DigiPlane C CXX)
 
-include(CPack)
-
 # Utility function to copy files inside of ${CMAKE_CURRENT_LIST_DIR}/resources to the final executable output directory
 function(copy_resources)
     file(GLOB_RECURSE resources RELATIVE ${CMAKE_CURRENT_LIST_DIR}/resources ${CMAKE_CURRENT_LIST_DIR}/resources/*)
@@ -12,10 +10,10 @@ function(copy_resources)
     endforeach()
 endfunction()
 
+# foundation
 add_subdirectory(modules/SDL)
-
-#public include imgui and imgui/backend at modules/
-include_directories(modules/imgui modules/imgui/backends)
-
+# intermediary
+add_subdirectory(DigiPlaneEngine)
+# final
 add_subdirectory(Editor)
 add_subdirectory(Game)
