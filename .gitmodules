@@ -5,3 +5,6 @@
 	path = modules/imgui
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
+[submodule "modules/flecs"]
+	path = modules/flecs
+	url = https://github.com/SanderMertens/flecs.git

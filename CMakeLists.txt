@@ -12,6 +12,7 @@ endfunction()
 
 # foundation
 add_subdirectory(modules/SDL)
+add_subdirectory(modules/flecs)
 # intermediary
 add_subdirectory(DigiPlaneEngine)
 # final

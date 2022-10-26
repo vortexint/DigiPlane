@@ -7,12 +7,8 @@ add_executable(DigiPlaneEditor WIN32)
 target_sources(DigiPlaneEditor PRIVATE
 ${CMAKE_CURRENT_LIST_DIR}/Main.cpp
 ${CMAKE_CURRENT_LIST_DIR}/Editor.cpp
+${CMAKE_CURRENT_LIST_DIR}/Editor.rc
 )
-
-# if windows, add Editor.rc
-if(WIN32)
-target_sources(DigiPlaneEditor PRIVATE ${CMAKE_CURRENT_LIST_DIR}/Editor.rc)
-endif()
 
 target_include_directories(DigiPlaneEditor PRIVATE
 ${CMAKE_SOURCE_DIR}/include
@@ -20,7 +16,7 @@ ${CMAKE_SOURCE_DIR}/DigiPlaneEngine
 )
 
 # link SDL2 statically
-target_link_libraries(DigiPlaneEditor PRIVATE DigiPlaneEngine)
+target_link_libraries(DigiPlaneEditor PUBLIC DigiPlaneEngine)
 
 # copy resources to build directory
 copy_resources()
