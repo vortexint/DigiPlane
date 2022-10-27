@@ -49,9 +49,11 @@ namespace DigiPlane::Engine
 
 
     public:
-        // constructor, creates a new scene and sets it as the active scene
-        // @param sceneName: the name of the initial scene
+        // constructor, creates a named scene
+        // @param sceneName: the name for the initial scene
         SceneManager(std::string sceneName);
+        // constructor, creates a default scene and sets it as the active scene
+        SceneManager();
         ~SceneManager(); 
 
 

@@ -14,6 +14,7 @@ target_sources(DigiPlaneEngine PRIVATE
 ${CMAKE_CURRENT_LIST_DIR}/glad.c
 ${CMAKE_CURRENT_LIST_DIR}/Scene.cpp
 ${CMAKE_CURRENT_LIST_DIR}/Engine.cpp
+${CMAKE_CURRENT_LIST_DIR}/Utils.cpp
 )
 
 target_include_directories(DigiPlaneEngine PUBLIC

@@ -1,16 +1,21 @@
 #include "./Scene.hpp"
+#include "./Utils.hpp"
 
 namespace DigiPlane::Engine
 {
 
     SceneManager::SceneManager( std::string sceneName ) {
-        // create a new scene, can't start without a scene.
         CreateScene(sceneName);
         SetActiveScene(sceneName);
     }
 
+    SceneManager::SceneManager() {
+        CreateScene("DefaultScene");
+        SetActiveScene("DefaultScene");
+    }
+
     SceneManager::~SceneManager() {
-        // empty the scenes is probably not necessary, but it should be good practice
+        // emptying the scenes is probably not necessary, but it should be good practice
         scenes.clear();
     }
 
@@ -26,7 +31,7 @@ namespace DigiPlane::Engine
         // if scene is the last scene, don't delete it
         if (scenes.size() == 1) {
             // print warning to console
-            std::cerr << "WARNING: Attempted to delete the last scene, this is not allowed." << std::endl;
+            std::cerr << "ERROR: Can't delete the only existing scene: \"" << sceneReference.begin()->first << "\"\n";
             return;
         }
         // remove the scene from the map and vector
@@ -39,6 +44,22 @@ namespace DigiPlane::Engine
 
     void SceneManager::DestroyScene(std::string sceneName)
     {
+        // check if scene exists
+        if (sceneReference.find(sceneName) == sceneReference.end()) {
+            // find most similar match to sceneName in the map with levenshtein_distance
+            std::string closestMatch = "";
+            size_t closestMatchDistance = 0;
+            for (auto& scene : sceneReference) {
+                size_t distance = DigiPlane::Utils::levenshteinDistance(sceneName.c_str(), sceneName.size(), scene.first.c_str(), scene.first.size());
+                if (closestMatchDistance == 0 || distance < closestMatchDistance) {
+                    closestMatch = scene.first;
+                    closestMatchDistance = distance;
+                }
+            }
+            std::cerr << "ERROR: Scene \"" << sceneName << "\" doesn't exist, did you mean \"" << closestMatch << "\"?\n";
+
+            return;
+        }
         // if scene is the last scene, don't delete it
         if (scenes.size() == 1) {
             std::cerr << "ERROR: Can't delete the only existing scene: \"" << sceneName << "\"\ninfo: When the SceneManager leaves scope, no manual scene deletion is required\n";
