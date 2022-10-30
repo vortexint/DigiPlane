@@ -9,10 +9,7 @@ namespace DigiPlane::Engine
         SetActiveScene(sceneName);
     }
 
-    SceneManager::SceneManager() {
-        CreateScene("DefaultScene");
-        SetActiveScene("DefaultScene");
-    }
+    SceneManager::SceneManager() {}
 
     SceneManager::~SceneManager() {
         // emptying the scenes is probably not necessary, but it should be good practice

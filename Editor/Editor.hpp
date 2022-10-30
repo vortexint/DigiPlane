@@ -9,19 +9,24 @@
 // I'm warning you, don't touch this
 #include "all_include.hpp"
 
-class Application : public DigiPlane::Engine::Application 
-{
-private:
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    SDL_GLContext gl_context;
-    struct nk_context *ctx;
-    bool is_running;
+// Application class is responsible for using the engine by overriding Awake(), Update(), LateUpdate()...
+// this is the class that you will be using to create your own application
+class Application final : public DigiPlane::Engine::ApplicationBase {
+    /* Maximized size and position that is defined automatically by the OS
+    User may have a custom positioned taskbar, so this is the simplest
+    workaround for movement of custom
+    */
+    int maxW, maxH;
+    int maxX, maxY;
+
 public:
-    Application (void);
-    ~Application(void);
-    void Initialize( char* windowTitle );
-    bool getRunning(void) { return is_running; }
+    Application(void)  {}
+    ~Application(void) {}
+
+    void Awake(void)       override;
+    void Update(void)      override;
+    void LateUpdate(void)  override;
+    void FixedUpdate(void) override;
 };
 
 #endif // EDITOR_HPP

@@ -5,15 +5,14 @@
 
 /* Global variables */
 
-std::unique_ptr<DigiPlane::Editor::Application> editorApp;
+std::unique_ptr<Application> editorApp;
 
 
 int main(int argc, char *argv[])
 {
-    editorApp = std::make_unique<DigiPlane::Editor::Application>();
+    editorApp = std::make_unique<Application>();
 
     editorApp->Initialize(EDITOR_NAME);
-
 
     return 0;   
 }

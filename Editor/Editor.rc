@@ -1,7 +1,7 @@
 #include <windows.h>
 #define IDC_STATIC -1
 
-100 ICON "DigiPlane.ico"
+100 ICON "Icon.ico"
 
 10 MENU
 {		// or BEGIN

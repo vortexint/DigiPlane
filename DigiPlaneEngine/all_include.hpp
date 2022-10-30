@@ -4,7 +4,6 @@
 
 // All includes shall refer to the current directory with ./ to make sure any ambiguity is avoided
 #include "./Engine.hpp"
-#include "./Scene.hpp"
 #include "./Utils.hpp"
 
 #endif // ALL_INCLUDE_HPP

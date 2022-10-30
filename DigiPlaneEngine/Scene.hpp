@@ -20,8 +20,6 @@ namespace DigiPlane::Engine
         // Cameras are important and thus passed to a vector, this is so the
         // first camera in the vector is recgonized as the active camera
         std::vector<ecs_entity_t> cameras;
-
-       std::string text;
     };
 
     /* The SceneManager class is responsible for storing the scenes.
@@ -44,9 +42,9 @@ namespace DigiPlane::Engine
         */
         std::vector<Scene> scenes;
         std::map<std::string, int> sceneReference;
+
         // current working scene (automatically updated if a scene behind it is deleted)
         int activeScene;
-
 
     public:
         // constructor, creates a named scene
@@ -72,7 +70,12 @@ namespace DigiPlane::Engine
         // @param sceneName: the name of the scene to be set as active
         void SetActiveScene(std::string sceneName) { activeScene = sceneReference[sceneName]; }
 
-        // get scene?
+        // Get the name of the active scene
+        std::string GetActiveSceneName() { return scenes[activeScene].name;}
+
+        std::vector<Scene> getScenes() { return scenes; }
+
+        size_t getSceneCount() { return scenes.size(); }
 
     };
 
