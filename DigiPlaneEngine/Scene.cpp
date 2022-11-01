@@ -17,9 +17,13 @@ namespace DigiPlane::Engine
     }
 
     void SceneManager::CreateScene(std::string sceneName) {
-        // create scene with name sceneName and emplace it into the vector
-        scenes.emplace_back(sceneName);
-        // add the scene to the map, with the index of the scene in the vector
+        // check if a scene with the same name already exists, if it does, overwrite it, otherwise emplace it and add the scene to the map
+        if (sceneReference.find(sceneName) != sceneReference.end()) {
+            scenes[sceneReference[sceneName]] = Scene(sceneName);
+            std::cerr << "Scene named \'" << sceneName << "\' already exists, it has been overwritten." << std::endl;
+            return;
+        }
+        scenes.emplace_back(Scene(sceneName));
         sceneReference[sceneName] = (int)scenes.size() - 1;
     }
 

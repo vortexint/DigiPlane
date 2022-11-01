@@ -70,9 +70,6 @@ namespace DigiPlane::Engine
         // @param sceneName: the name of the scene to be set as active
         void SetActiveScene(std::string sceneName) { activeScene = sceneReference[sceneName]; }
 
-        // Get the name of the active scene
-        std::string GetActiveSceneName() { return scenes[activeScene].name;}
-
         std::vector<Scene> getScenes() { return scenes; }
 
         size_t getSceneCount() { return scenes.size(); }

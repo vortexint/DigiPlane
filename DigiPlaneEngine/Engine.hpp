@@ -30,13 +30,17 @@ namespace DigiPlane::Engine
         struct nk_context *ctx;
 
         // Numeric Variables
-
+        double deltaTime;
         bool is_running;
     public:
         // SceneMagr is the ApplicationBase's gateway for editing scenes, adding entities, components, etc.
         std::unique_ptr<SceneManager> SceneMgr;
 
-        void Initialize( char* windowTitle ); // Initializes the engine
+        // Initializes a Digiplane application window with SDL
+        // @param windowTitle: The title of the window
+        // @param windowResolution: The initial resolution of the window
+        // @param windowflags: The SDL flags for the window
+        void Initialize( char* windowTitle, SDL_Point windowResolution , Uint32 windowflags);
 
         // Awake is Called before the update loop, this is where you should initialize your application
         // such as creating scenes, adding entities, components, etc. Must be overriden.
@@ -48,9 +52,14 @@ namespace DigiPlane::Engine
         // LateUpdate is called after all updates have been called
         virtual void LateUpdate(void) {return;};
 
-        bool getRunning(void) { return is_running; }
-        
-        SDL_Window* getSDLWindow(void) { return window; }
+        bool getRunning(void) { return is_running; };
+
+        // DeltaTime is the time in milliseconds since the last frame
+        // it is used to calculate the speed of movement, rotation, etc.
+        // without it, the speed of movement would be different on different computers
+        double getDeltaTime(void) { return deltaTime; };
+
+        SDL_Window* getSDLWindow(void) { return window; };
     
     };
 

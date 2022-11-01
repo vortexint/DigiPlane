@@ -8,7 +8,7 @@
 
 namespace DigiPlane::Engine
 {
-    void ApplicationBase::Initialize( char* windowTitle)
+    void ApplicationBase::Initialize( char* windowTitle, SDL_Point windowResolution , Uint32 windowflags)
     {
         /* Initialize SDL */
         SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");
@@ -27,7 +27,7 @@ namespace DigiPlane::Engine
         window = SDL_CreateWindow(windowTitle,
                                 SDL_WINDOWPOS_CENTERED,
                                 SDL_WINDOWPOS_CENTERED,
-                                0, 0, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN  | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED);
+                                windowResolution.x, windowResolution.y, windowflags);
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
         gl_context = SDL_GL_CreateContext(window);
@@ -49,16 +49,31 @@ namespace DigiPlane::Engine
             std::cerr << "WARNING: No scenes have been added in the Awake() function, therefore \"DefaultScene\" has been created." << std::endl;
         }
 
+        Uint64 currentTime = SDL_GetPerformanceCounter();
+        Uint64 lastTime = 0;
+        deltaTime = 0.0;
         // Create an event handler
         SDL_Event event;
         while (is_running) {
+            /* Timing */
+            lastTime = currentTime;
+            currentTime = SDL_GetPerformanceCounter();
+            deltaTime = deltaTime = ((currentTime - lastTime)*1000 / (double)SDL_GetPerformanceFrequency() );
+
+            // call fixedUpdate 50 times per second
+            static double fixedUpdateTimer = 0.0;
+            fixedUpdateTimer += deltaTime;
+            if (fixedUpdateTimer >= 20.0) {
+                fixedUpdateTimer = 0.0;
+                FixedUpdate();
+            }
+
             glClearColor(0, 0, 0, 0);
             glClear(GL_COLOR_BUFFER_BIT);
-            // IMPORTANT: `nk_sdl_render` modifies some global OpenGL state
-            // with blending, scissor, face culling, depth test and viewport and
-            // defaults everything back into a default state.
-            // Make sure to either a.) save and restore or b.) reset your own state after
-            // rendering the UI. 
+
+            /* Render Here */
+            
+            Update(); // Call user update function
 
             /* Swap front and back buffers */
             SDL_GL_SwapWindow(window);
