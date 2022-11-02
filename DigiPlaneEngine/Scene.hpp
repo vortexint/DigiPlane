@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include "flecs.h"
 
 namespace DigiPlane::Engine
@@ -41,15 +41,14 @@ namespace DigiPlane::Engine
         than the index; the index is only utilized internally and is not exposed. 
         */
         std::vector<Scene> scenes;
-        std::map<std::string, int> sceneReference;
 
         // current working scene (automatically updated if a scene behind it is deleted)
-        int activeScene;
+        size_t activeScene;
 
     public:
         // constructor, creates a named scene
         // @param sceneName: the name for the initial scene
-        SceneManager(std::string sceneName);
+        SceneManager(std::string_view sceneName);
         // constructor, creates a default scene and sets it as the active scene
         SceneManager();
         ~SceneManager(); 
@@ -57,22 +56,22 @@ namespace DigiPlane::Engine
 
         // Create a new scene, if a scene with the same name exists, it will be overwritten
         // @param sceneName: the name for the new scene
-        void CreateScene(std::string sceneName);
+        void CreateScene(std::string_view sceneName);
 
         // Destroy the active scene.
         void DestroyScene();
 
         // Destroy a scene by name.
         // @param sceneName: the name of the scene to be removed
-        void DestroyScene(std::string sceneName);
+        void DestroyScene(std::string_view sceneName);
 
         // Set the active scene for operations ( e.g. creating entities )
         // @param sceneName: the name of the scene to be set as active
-        void SetActiveScene(std::string sceneName) { activeScene = sceneReference[sceneName]; }
+        void SetActiveScene(std::string_view sceneName);
+        
+        const std::vector<Scene> getScenes() { return scenes; }
 
-        std::vector<Scene> getScenes() { return scenes; }
-
-        size_t getSceneCount() { return scenes.size(); }
+        const size_t getSceneCount() { return scenes.size(); }
 
     };
 
