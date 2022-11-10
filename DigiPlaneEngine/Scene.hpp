@@ -31,19 +31,15 @@ namespace DigiPlane::Engine
         Scenes are automatically cleaned up when the scenemanager goes out of scope.
         Additionally one may never get a reference or pointer to a scene.
     */ 
-    class SceneManager
-    {
+    class SceneManager {
     private:
-        /* Editor's note:
-        "scenes" was previously std::map since it's simpler to get a scene by name, but it's not very efficient.
-        To address this, there is a vector and a map, with the map storing the index of the scene in the vector,
-        so we can find the scene by name and index in O(1) time. Externally, the user should use the name rather
-        than the index; the index is only utilized internally and is not exposed. 
-        */
         std::vector<Scene> scenes;
 
         // current working scene (automatically updated if a scene behind it is deleted)
         size_t activeScene;
+
+        // find similar scene names with levenshtein distance
+        std::vector<std::string> FindSimilarSceneNames(std::string_view sceneName);
 
     public:
         // constructor, creates a named scene

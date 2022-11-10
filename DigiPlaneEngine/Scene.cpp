@@ -10,10 +10,22 @@ namespace DigiPlane::Engine
     }
 
     SceneManager::SceneManager() {}
-
     SceneManager::~SceneManager() {
         // emptying the scenes is probably not necessary, but it should be good practice
+        for (auto& scene : scenes) {
+            ecs_fini(scene.world);
+        }
         scenes.clear();
+    }
+
+    std::vector<std::string> SceneManager::FindSimilarSceneNames(std::string_view sceneName) {
+        std::vector<std::string> similarSceneNames;
+        for (auto& scene : scenes) {
+            if (Utils::levenshteinDistance(sceneName.data(), sceneName.size(), scene.name.c_str(), scene.name.size()) < 3) {
+                similarSceneNames.push_back(scene.name);
+            }
+        }
+        return similarSceneNames;
     }
 
     void SceneManager::CreateScene(std::string_view sceneName) {
