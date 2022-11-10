@@ -10,13 +10,10 @@ namespace DigiPlane::Engine
     }
 
     SceneManager::SceneManager() {
-        scenes.reserve(1); // allocate space for one scene
+        scenes.reserve(1); // allocate space for atleast one scene
     }
     SceneManager::~SceneManager() {
-        // emptying the scenes is probably not necessary, but it should be good practice
-        for (auto& scene : scenes) {
-            ecs_fini(scene.world);
-        }
+        // it should be good practice
         scenes.clear();
     }
 

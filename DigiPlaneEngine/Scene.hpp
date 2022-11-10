@@ -8,22 +8,30 @@
 
 namespace DigiPlane::Engine
 {
-    // The Scene struct stores the scene data of the game
-    // it is a class instead of a struct because it has functions for 
-    struct Scene
+    // The Scene class stores the scene data of the game
+    class Scene
     {
         // The scene's name
         std::string name;
-        // Where all entities of the scene are stored
-        ecs_world_t* world;
 
-        Scene() {
-            std::cerr << "Scene constructor\n";
+        // cannot use flecs::world because it is not copyable, so we use a pointer
+        flecs::world* world;
+        
+        friend class SceneManager;
+    public:
+        Scene(std::string_view sceneName) : name(sceneName) {
+            std::cerr << "Scene \"" << name << "\" created\n";
+        }
+        // The scene's destructor
+        ~Scene() {
+            std::cerr << "Scene \"" << name << "\" destroyed\n";
         }
 
-        // Cameras are important and thus passed to a vector, this is so the
-        // first camera in the vector is recgonized as the active camera
-        std::vector<ecs_entity_t> cameras;
+        // Get the scene's name
+        std::string getName() const { return name; }
+        // Set the scene's name
+        void setName(std::string_view sceneName) { name = sceneName; }
+
     };
 
     /* The SceneManager class is responsible for storing the pointer to all scenes

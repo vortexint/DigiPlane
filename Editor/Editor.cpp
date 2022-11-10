@@ -4,7 +4,7 @@ using namespace DigiPlane::Engine;
 
 void Application::Awake() {
     /* Create the editor scene */
-    Scene editorScene;
+    Scene editorScene("Editor");
     SceneMgr->AddScene(editorScene);
     SceneMgr->SetActiveScene(editorScene);
     // set window title to current title + GL version
