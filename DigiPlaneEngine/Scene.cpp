@@ -9,7 +9,9 @@ namespace DigiPlane::Engine
         SetActiveScene(sceneName);
     }
 
-    SceneManager::SceneManager() {}
+    SceneManager::SceneManager() {
+        scenes.reserve(1); // allocate space for one scene
+    }
     SceneManager::~SceneManager() {
         // emptying the scenes is probably not necessary, but it should be good practice
         for (auto& scene : scenes) {
@@ -21,8 +23,9 @@ namespace DigiPlane::Engine
     std::vector<std::string> SceneManager::FindSimilarSceneNames(std::string_view sceneName) {
         std::vector<std::string> similarSceneNames;
         for (auto& scene : scenes) {
-            if (Utils::levenshteinDistance(sceneName.data(), sceneName.size(), scene.name.c_str(), scene.name.size()) < 3) {
-                similarSceneNames.push_back(scene.name);
+            std::cout << "scene name: " << scene.name << std::endl;
+            if (Utils::levenshteinDistance(sceneName.data(), sceneName.size(), scene.name.c_str(), scene.name.size()) < 3) { // the 3 means
+                similarSceneNames.emplace_back(scene.name);
             }
         }
         return similarSceneNames;
@@ -70,16 +73,7 @@ namespace DigiPlane::Engine
             }
         }
         // if code reaches here, the scene doesn't exist.
-        std::string closestSceneName = "";
-        size_t closestSceneDistance = 0;
-        for (auto& scene : scenes) {
-            size_t distance = DigiPlane::Utils::levenshteinDistance(sceneName.data(), sceneName.size(), scene.name.data(), scene.name.size());
-            if (distance < closestSceneDistance) {
-                closestSceneName = scene.name;
-                closestSceneDistance = distance;
-            }
-        }
-        std::cerr << "ERROR: Scene named \"" << sceneName << "\" doesn't exist, did you mean \"" << closestSceneName << "\"?\n";
+        std::cerr << "ERROR: Scene named \"" << sceneName << "\" doesn't exist, did you mean \"" << FindSimilarSceneNames(sceneName)[0] << "\"?\n";
         return;
     }
 
@@ -92,16 +86,7 @@ namespace DigiPlane::Engine
             }
         }
         // if code reaches here, the scene doesn't exist.
-        std::string closestSceneName = "";
-        size_t closestSceneDistance = 0;
-        for (auto& scene : scenes) {
-            size_t distance = DigiPlane::Utils::levenshteinDistance(sceneName.data(), sceneName.size(), scene.name.data(), scene.name.size());
-            if (distance < closestSceneDistance) {
-                closestSceneName = scene.name;
-                closestSceneDistance = distance;
-            }
-        }
-        std::cerr << "ERROR: Scene named \"" << sceneName << "\" doesn't exist, did you mean \"" << closestSceneName << "\"?\n";
+        std::cerr << "ERROR: Scene named \"" << sceneName << "\" doesn't exist, did you mean \"" << FindSimilarSceneNames(sceneName)[0] << "\"?\n";
         return;
     }
 
