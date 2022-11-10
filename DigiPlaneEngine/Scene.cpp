@@ -4,9 +4,9 @@
 namespace DigiPlane::Engine
 {
 
-    SceneManager::SceneManager( std::string_view sceneName ) {
-        CreateScene(sceneName);
-        SetActiveScene(sceneName);
+    SceneManager::SceneManager( Scene scene ) {
+        AddScene(scene);
+        SetActiveScene(scene);
     }
 
     SceneManager::SceneManager() {
@@ -31,16 +31,10 @@ namespace DigiPlane::Engine
         return similarSceneNames;
     }
 
-    void SceneManager::CreateScene(std::string_view sceneName) {
-        // check if a scene with the same name already exists, if it does, overwrite it, otherwise emplace it and add the scene to the map
-        for (auto& scene : scenes) {
-            if (scene.name == sceneName) {
-                scene = Scene(sceneName.data());
-                std::cerr << "Scene named \'" << sceneName << "\' already exists, it has been overwritten." << std::endl;
-                return;
-            }
-        }
-        scenes.emplace_back(Scene(sceneName.data()));
+    int SceneManager::AddScene(Scene scene) {
+        // check if scene name is 
+        scenes.emplace_back(scene);
+        return 0;
     }
 
     void SceneManager::DestroyScene()
@@ -77,16 +71,17 @@ namespace DigiPlane::Engine
         return;
     }
 
-    void SceneManager::SetActiveScene(std::string_view sceneName)
+    void SceneManager::SetActiveScene(Scene scene)
     {
+        // look for the same scene reference in the scenes vector
         for (size_t i = 0; i < scenes.size(); i++) {
-            if (scenes[i].name == sceneName) {
+            if (scenes[i].name == scene.name) {
                 activeScene = i;
                 return;
             }
         }
         // if code reaches here, the scene doesn't exist.
-        std::cerr << "ERROR: Scene named \"" << sceneName << "\" doesn't exist, did you mean \"" << FindSimilarSceneNames(sceneName)[0] << "\"?\n";
+        std::cerr << "ERROR: Scene named \"" << scene.name << "\" doesn't exist, did you mean \"" << FindSimilarSceneNames(scene.name)[0] << "\"?\n";
         return;
     }
 

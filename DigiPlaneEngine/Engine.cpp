@@ -42,11 +42,10 @@ namespace DigiPlane::Engine
 
         Awake(); // Call user initializer
 
-        // check if any scenes have been added, if not, add a default scene
+        // check if any scenes have been added, if not, close the application
         if (SceneMgr->getSceneCount() == 0) {
-            SceneMgr->CreateScene("DefaultScene");
-            SceneMgr->SetActiveScene("DefaultScene");
-            std::cerr << "WARNING: No scenes have been added in the Awake() function, therefore \"DefaultScene\" has been created." << std::endl;
+            std::cerr << "STOP: No scenes have been added during the Awake() function, therefore the application will cease." << std::endl;
+            exit(1);
         }
 
         Uint64 currentTime = SDL_GetPerformanceCounter();

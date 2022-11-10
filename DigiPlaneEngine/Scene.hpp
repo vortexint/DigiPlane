@@ -17,16 +17,20 @@ namespace DigiPlane::Engine
         // Where all entities of the scene are stored
         ecs_world_t* world;
 
+        Scene() {
+            std::cerr << "Scene constructor\n";
+        }
+
         // Cameras are important and thus passed to a vector, this is so the
         // first camera in the vector is recgonized as the active camera
         std::vector<ecs_entity_t> cameras;
     };
 
-    /* The SceneManager class is responsible for storing the scenes.
+    /* The SceneManager class is responsible for storing the pointer to all scenes
         it must always have at least one scene, and can have as many as the user wants.
 
         There is no load/unload function, the SceneManager doesn't care about how you
-        tinker with your scenes, it just stores them, and gives you ways to modify them.
+        tinker with your scenes, it just points to them, and gives you ways to modify them.
 
         Scenes are automatically cleaned up when the scenemanager goes out of scope.
         Additionally one may never get a reference or pointer to a scene.
@@ -44,15 +48,15 @@ namespace DigiPlane::Engine
     public:
         // constructor, creates a named scene
         // @param sceneName: the name for the initial scene
-        SceneManager(std::string_view sceneName);
+        SceneManager(Scene scene);
         // constructor, creates a default scene and sets it as the active scene
         SceneManager();
         ~SceneManager(); 
 
 
-        // Create a new scene, if a scene with the same name exists, it will be overwritten
-        // @param sceneName: the name for the new scene
-        void CreateScene(std::string_view sceneName);
+        // Gets a shared_ptr to add a scene to the scene manager.
+        // @param scene: the scene to add to the scene manager
+        int AddScene(Scene scene);
 
         // Destroy the active scene.
         void DestroyScene();
@@ -63,7 +67,7 @@ namespace DigiPlane::Engine
 
         // Set the active scene for operations ( e.g. creating entities )
         // @param sceneName: the name of the scene to be set as active
-        void SetActiveScene(std::string_view sceneName);
+        void SetActiveScene(Scene scene);
         
         const std::vector<Scene> getScenes() { return scenes; }
 

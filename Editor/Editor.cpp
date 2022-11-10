@@ -1,9 +1,12 @@
 #include "Editor.hpp"
 
+using namespace DigiPlane::Engine;
+
 void Application::Awake() {
     /* Create the editor scene */
-    SceneMgr->CreateScene("EditorScene");
-    SceneMgr->SetActiveScene("EditorScene");
+    Scene editorScene;
+    SceneMgr->AddScene(editorScene);
+    SceneMgr->SetActiveScene(editorScene);
     // set window title to current title + GL version
     SDL_SetWindowTitle(getSDLWindow(), (std::string(SDL_GetWindowTitle(getSDLWindow())) + " | GL " +
                                         std::to_string(GLVersion.major) + "." + std::to_string(GLVersion.minor)).c_str());
