@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include "flecs.h"
 
+#include "Components.h"
+
 namespace DigiPlane::Engine
 {
     // The Scene class stores the scene data of the game
@@ -14,12 +16,13 @@ namespace DigiPlane::Engine
         // The scene's name
         std::string name;
 
-        // cannot use flecs::world because it is not copyable, so we use a pointer
-        flecs::world* world;
-        
+        ecs_world_t *ecs;
+
         friend class SceneManager;
     public:
         Scene(std::string_view sceneName) : name(sceneName) {
+            // initialize the ecs world
+            ecs = ecs_init();
             std::cerr << "Scene \"" << name << "\" created\n";
         }
         // The scene's destructor
