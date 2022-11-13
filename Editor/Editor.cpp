@@ -1,27 +1,31 @@
-#include "Editor.hpp"
+#ifndef EDITOR_HPP
+#define EDITOR_HPP
 
-using namespace DigiPlane::Engine;
+#include <iostream>
+#include <string>
 
-void Application::Awake() {
-    /* Create the editor scene */
-    Scene editorScene("Editor");
-    SceneMgr->AddScene(editorScene);
-    SceneMgr->SetActiveScene(editorScene);
-    // set window title to current title + GL version
-    SDL_SetWindowTitle(getSDLWindow(), (std::string(SDL_GetWindowTitle(getSDLWindow())) + " | GL " +
-                                        std::to_string(GLVersion.major) + "." + std::to_string(GLVersion.minor)).c_str());
+// Application class is responsible for using the engine by overriding Awake(), Update(), LateUpdate()...
+// this is the class that you will be using to create your own application
+class Application {
+    /* Maximized size and position that is defined automatically by the OS
+    User may have a custom positioned taskbar, so this is the simplest
+    workaround for now */
+    int maxW, maxH;
+    int maxX, maxY;
 
-    /* Create the editor camera */
-    //auto editorCamera = SceneMgr->CreateEntity("EditorCamera");
+public:
+    Application(void)  {}
+    ~Application(void) {}
 
+    // remove copy constructor and assignment operator to avoid multiple instances of the application
+    Application(const Application&) = delete;
+    Application& operator=(const Application&) = delete;
 
-}
+    void Awake(void);
+    void Update(void);
+    void LateUpdate(void);
+    void FixedUpdate(void);
+};
 
-void Application::Update() {
-}
+#endif // EDITOR_HPP
 
-void Application::LateUpdate() {
-}
-
-void Application::FixedUpdate() {
-}

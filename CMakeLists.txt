@@ -14,7 +14,7 @@ endfunction()
 add_subdirectory(modules/SDL)
 add_subdirectory(modules/flecs)
 # intermediary
-add_subdirectory(DigiPlaneEngine)
+
 # final
 add_subdirectory(Editor)
-add_subdirectory(Game)
+add_subdirectory(Runtime)
