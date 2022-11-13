@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include "flecs.h"
 
-#include "Components.h"
+#include "Components.hpp"
 
 namespace DigiPlane::Engine
 {
@@ -15,18 +15,18 @@ namespace DigiPlane::Engine
     {
         // The scene's name
         std::string name;
-
-        ecs_world_t *ecs;
-
+        flecs::world& ecs; // has to be a pointer as flecs::world has no default constructor
+        
         friend class SceneManager;
     public:
         Scene(std::string_view sceneName) : name(sceneName) {
-            // initialize the ecs world
-            ecs = ecs_init();
+            ecs = flecs::world();
+            //e.add<Components::Position>();
             std::cerr << "Scene \"" << name << "\" created\n";
         }
         // The scene's destructor
         ~Scene() {
+            //delete ecs;
             std::cerr << "Scene \"" << name << "\" destroyed\n";
         }
 
@@ -64,7 +64,6 @@ namespace DigiPlane::Engine
         SceneManager();
         ~SceneManager(); 
 
-
         // Gets a shared_ptr to add a scene to the scene manager.
         // @param scene: the scene to add to the scene manager
         int AddScene(Scene scene);
@@ -83,6 +82,21 @@ namespace DigiPlane::Engine
         const std::vector<Scene> getScenes() { return scenes; }
 
         const size_t getSceneCount() { return scenes.size(); }
+
+        /* Scene operations */
+
+        // register a struct as a component to the active scene ( this is a wrapper for ecs.entity.add<component>() )
+        // @param component: the component to be registered
+        template<typename T> void RegisterComponent(T component) {
+          //scenes[activeScene].ecs->entity().add<T>();
+        }
+
+        // create an entity in the active scene
+        // @param name: the name of the entity
+        // @return: the entity's id
+        flecs::entity CreateEntity(std::string_view name) {
+            return scenes[activeScene].ecs.entity(name.data());
+        }
 
     };
 
