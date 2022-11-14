@@ -15,7 +15,7 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 
 ## Getting Started
 
-1. Download and install the [framework](https://github.com/vortexdevsoftware/DigiPlane/releases).
+1. Download and install the [engine](https://github.com/vortexdevsoftware/DigiPlane/releases).
 2. Create a new project using the [tutorial](https://digiplane.readthedocs.io/en/latest/tutorial.html).
 3. Add your assets to the project using [resources](https://digiplane.readthedocs.io/en/latest/resources.html).
 4. Write your code - See the [documentation](https://digiplane.readthedocs.io/en/latest/) for more information.
