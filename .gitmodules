@@ -1,10 +1,6 @@
-[submodule "modules/SDL"]
-	path = modules/SDL
-	url = https://github.com/libsdl-org/SDL.git
-[submodule "modules/imgui"]
-	path = modules/imgui
-	url = https://github.com/ocornut/imgui.git
-	branch = docking
 [submodule "modules/flecs"]
 	path = modules/flecs
 	url = https://github.com/SanderMertens/flecs.git
+[submodule "modules/bgfx.cmake"]
+	path = modules/bgfx.cmake
+	url = https://github.com/bkaradzic/bgfx.cmake
