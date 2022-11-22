@@ -4,8 +4,13 @@
 #include <iostream>
 #include <string>
 
-// Application class is responsible for using the engine by overriding Awake(), Update(), LateUpdate()...
-// this is the class that you will be using to create your own application
+#include "glad/glad.h"
+#include "SDL.h"
+#include "SDL_opengl.h"
+
+
+// Application entry point class
+// This class is responsible for initializing the editor
 class Application {
     /* Maximized size and position that is defined automatically by the OS
     User may have a custom positioned taskbar, so this is the simplest
@@ -13,15 +18,22 @@ class Application {
     int maxW, maxH;
     int maxX, maxY;
 
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    SDL_GLContext gl_context;
+    struct nk_context *ctx;
+
+    bool is_running;
 public:
-    Application(void)  {}
-    ~Application(void) {}
+    float deltaTime;
+    Application(void);
+    ~Application(void);
 
     // remove copy constructor and assignment operator to avoid multiple instances of the application
     Application(const Application&) = delete;
     Application& operator=(const Application&) = delete;
 
-    void Awake(void);
+    void init(void);
     void Update(void);
     void LateUpdate(void);
     void FixedUpdate(void);
