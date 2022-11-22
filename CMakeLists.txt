@@ -11,7 +11,7 @@ function(copy_resources)
 endfunction()
 
 # foundation
-add_subdirectory(modules/SDL)
+add_subdirectory(modules/bgfx.cmake)
 add_subdirectory(modules/flecs)
 # intermediary
 

@@ -6,6 +6,7 @@ add_executable(DigiPlaneEditor WIN32)
 
 if(MSVC)
   target_compile_options(DigiPlaneEditor PRIVATE /W4)
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup") # Use main instead of WinMain for Windows subsystem
 else()
   target_compile_options(DigiPlaneEditor PRIVATE -Wall -Wextra -Wpedantic)
 endif()
@@ -21,7 +22,7 @@ ${CMAKE_SOURCE_DIR}/include
 )
 
 # link SDL2 and flecs
-target_link_libraries(DigiPlaneEditor PUBLIC SDL2-static SDL2main opengl32 flecs_static)
+target_link_libraries(DigiPlaneEditor bgfx flecs_static)
 
 # copy resources to build directory
 copy_resources()

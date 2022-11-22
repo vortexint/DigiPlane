@@ -1,3 +1,7 @@
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include <iostream>
 #include "Editor.hpp"
 
@@ -7,8 +11,7 @@
 
 std::unique_ptr<Application> editorApp;
 
-
-int main(int argc, char *argv[])
+int main()
 {
     editorApp = std::make_unique<Application>();
     
