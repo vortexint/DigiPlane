@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Digiplane is a 2D OpenGL game engine that makes it easy to create high-quality 2D games. It provides simple high-level and low-level access to core features such as using HLSL/GLSL shaders, creating and managing scenes, and uses a entity-component system. Digiplane also supports Linux and Windows.
+Digiplane is a 2D Game engine that makes it easy to create high-quality 2D games. It provides simple high-level and low-level access to core features such as using HLSL/GLSL shaders, creating and managing scenes, and uses a entity-component system. Digiplane also supports Linux and Windows.
 
 If you would like to try out the framework, check out the [tutorial](https://digiplane.readthedocs.io/en/latest/tutorial.html).
 
@@ -20,3 +20,9 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 3. Add your assets to the project using [resources](https://digiplane.readthedocs.io/en/latest/resources.html).
 4. Write your code - See the [documentation](https://digiplane.readthedocs.io/en/latest/) for more information.
 5. Build and run your game
+
+## Building
+### Dependencies: Visual Studio (MSVC) or MinGW-w64
+Clone or download the Engine to any directory, if you are using Git, run: ```git submodule update --init --recursive```.
+
+It is recommended to use CMake Gui but you can manually generate the project files for the specified compiler via command-line.
