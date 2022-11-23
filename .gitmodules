@@ -4,3 +4,6 @@
 [submodule "modules/bgfx.cmake"]
 	path = modules/bgfx.cmake
 	url = https://github.com/bkaradzic/bgfx.cmake
+[submodule "modules/glfw"]
+	path = modules/glfw
+	url = https://github.com/glfw/glfw.git

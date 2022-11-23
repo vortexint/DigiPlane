@@ -4,7 +4,7 @@
 
 Application::Application(void)
 {
-    is_running = true;
+    std::cout << "Application constructor called\n";
 }
 
 // Destructor

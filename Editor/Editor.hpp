@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <bgfx/bgfx.h>
 
 
 // Application entry point class
