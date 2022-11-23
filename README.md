@@ -24,5 +24,10 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 ## Building
 ### Dependencies: Visual Studio (MSVC) or MinGW-w64
 Clone or download the Engine to any directory, if you are using Git, run: ```git submodule update --init --recursive```.
+##### It is recommended to use CMake Gui but you can manually generate the project files for the specified compiler via command-line.
+After generating the project files you should be able to build the Engine with the specified build system for most platforms.
+If you have any issues for your platform, please open an issue.
 
-It is recommended to use CMake Gui but you can manually generate the project files for the specified compiler via command-line.
+### Tested Platforms:
+- Windows
+- Linux Mint
