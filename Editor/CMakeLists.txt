@@ -21,8 +21,8 @@ target_include_directories(DigiPlaneEditor PRIVATE
 ${CMAKE_SOURCE_DIR}/include
 )
 
-# link SDL2 and flecs
-target_link_libraries(DigiPlaneEditor bgfx flecs_static)
+# link Digiplane's core to the editor
+target_link_libraries(DigiPlaneEditor DigiPlaneCore)
 
 # copy resources to build directory
 copy_resources()

@@ -12,9 +12,10 @@ endfunction()
 
 # foundation
 add_subdirectory(modules/bgfx.cmake)
+add_subdirectory(modules/glfw)
 add_subdirectory(modules/flecs)
 # intermediary
-
+add_subdirectory(core)
 # final
 add_subdirectory(Editor)
 add_subdirectory(Runtime)
