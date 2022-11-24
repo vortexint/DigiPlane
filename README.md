@@ -22,7 +22,11 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 5. Build and run your game
 
 ## Building (Nightly build)
-### Dependencies: Visual Studio (MSVC) or MinGW-w64
+### Dependencies:
+1. CMake Build System
+2. Visual Studio (MSVC) / MinGW-w64 / g++
+3. X11 development packages installed (Linux only, search proper package(s) for your distro)
+
 You may want to test experimental features before release, so
 clone or download the main branch to any directory, if you are using Git, make sure to run:
 
