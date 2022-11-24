@@ -11,14 +11,12 @@ else()
 endif()
 
 target_sources(DigiPlaneCore PRIVATE
-${CMAKE_CURRENT_LIST_DIR}/core.cpp
+${CMAKE_CURRENT_LIST_DIR}/init.cpp
 )
 
 target_include_directories(DigiPlaneCore PRIVATE
 ${CMAKE_SOURCE_DIR}/include
 )
 
-target_link_libraries(DigiPlaneCore bgfx flecs_static)
-
-# copy resources to build directory
-copy_resources()
+target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_LIST_DIR}/pch.hpp)
+target_link_libraries(DigiPlaneCore glfw bgfx flecs_static)

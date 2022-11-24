@@ -1,5 +1,5 @@
 // Core.cpp
-#include "pch.hpp"
+#include "./pch.hpp"
 
 namespace DigiPlane {
 namespace Scene {}

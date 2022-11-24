@@ -1,5 +1,8 @@
 #pragma once
 // Precompiled header file.
+
+// STD
+
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -12,3 +15,10 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+#pragma warning(push, 0)
+
+#include "GLFW/glfw3.h"
+#include "flecs.h"
+
+#pragma warning(pop)
