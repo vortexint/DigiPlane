@@ -21,9 +21,11 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 4. Write your code - See the [documentation](https://digiplane.readthedocs.io/en/latest/) for more information.
 5. Build and run your game
 
-## Building
+## Building (Nightly build)
 ### Dependencies: Visual Studio (MSVC) or MinGW-w64
-Clone or download the Engine to any directory, if you are using Git, make sure to run: ```git submodule update --init --recursive```.
+You may want to test experimental features before release, so
+Clone or download the main branch to any directory, if you are using Git, make sure to run:
+```git submodule update --init --recursive```.
 ##### It is recommended to use CMake Gui but you can manually generate the project files for the specified compiler via command-line.
 After generating the project files you should be able to build the Engine with the specified build system for most platforms.
 
