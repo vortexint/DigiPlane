@@ -20,9 +20,6 @@ public:
     void init(void){
         std::cout << "Initialized\n";
     }
-    //void Update(void);
-    //void LateUpdate(void);
-    //void FixedUpdate(void);
 };
 
 #endif // EDITOR_HPP
