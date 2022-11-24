@@ -1,7 +1,11 @@
 // Core.cpp
 #include "./pch.hpp"
+#include "./internal.hpp"
 
 namespace DigiPlane {
-namespace Scene {}
-namespace IO {}
+
+DPAPI int Init_DigiPlane(void) {
+
 }
+
+} // DigiPlane namespace
