@@ -17,10 +17,6 @@ ${CMAKE_CURRENT_LIST_DIR}/Editor.cpp
 ${CMAKE_CURRENT_LIST_DIR}/Editor.rc
 )
 
-target_include_directories(DigiPlaneEditor PRIVATE
-${CMAKE_SOURCE_DIR}/include
-)
-
 # link Digiplane's core to the editor
 target_link_libraries(DigiPlaneEditor DigiPlaneCore)
 

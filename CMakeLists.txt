@@ -10,6 +10,11 @@ function(copy_resources)
     endforeach()
 endfunction()
 
+# Include for all subdirectories
+include_directories(
+${CMAKE_SOURCE_DIR}/include
+)
+
 # foundation
 add_subdirectory(modules/bgfx.cmake)
 add_subdirectory(modules/glfw)

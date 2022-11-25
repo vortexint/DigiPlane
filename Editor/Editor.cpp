@@ -1,6 +1,6 @@
-#include "Editor.hpp"
+#include "./Editor.hpp"
 
-// Application constructor
+using namespace DigiPlane;
 
 Application::Application(void)
 {
