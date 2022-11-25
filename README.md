@@ -25,7 +25,7 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 ### Dependencies:
 1. CMake Build System
 2. Visual Studio (MSVC) / MinGW-w64 / g++
-3. libgl1-mesa-dev, X11 development packages (Linux only, search proper package(s) for your distro)
+3. libgl1-mesa-dev, xorg-dev development packages (Linux only, search proper package(s) for your distro)
 
 You may want to test experimental features before release, so
 clone or download the main branch to any directory, if you are using Git, make sure to run:
