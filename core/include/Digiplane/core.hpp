@@ -1,5 +1,5 @@
-#ifndef DP_CORE_HPP
-#define DP_CORE_HPP
+#ifndef CORE_HPP
+#define CORE_HPP
 
 // DPAPI is used to declare public API functions for export as shared library.
 #if defined(_WIN32) && defined(_DIGIPLANE_BUILD_DLL)
@@ -19,5 +19,7 @@
 #define DIGIPLANE_MINOR 1
 
 namespace DigiPlane {
-    DPAPI int Init_DigiPlane(int width, int height, WindowMode mode);
+    DPAPI int Init_DigiPlane(int width, int height);
 } // DigiPlane
+
+#endif // DP_CORE_HPP

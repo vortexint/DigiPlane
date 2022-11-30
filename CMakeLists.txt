@@ -15,7 +15,7 @@ if (MSVC)
     # set ${PLATFORM} to Windows
     set(PLATFORM WIN32)
     # warning level 4
-    add_compile_options(/W4 /WX)
+    add_compile_options(/W4)
 else()
     # lots of warnings
     add_compile_options(-Wall -Wextra -pedantic)
