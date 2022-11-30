@@ -22,4 +22,4 @@ namespace DigiPlane {
     DPAPI int Init_DigiPlane(int width, int height);
 } // DigiPlane
 
-#endif // DP_CORE_HPP
+#endif // CORE_HPP
