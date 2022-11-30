@@ -1,5 +1,7 @@
-<h1 style="text-align: center">Digiplane</h1>
-<h5 style="text-align: center">Formerly project SenNight</h5>
+<div align="center">
+<h1>Digiplane</h1>
+<h5>Formerly project SenNight</h5>
+</div>
 
 ## Introduction
 
