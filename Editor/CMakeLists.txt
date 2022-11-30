@@ -2,14 +2,7 @@ project(DigiPlaneEditor C CXX)
 cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_CXX_STANDARD 17)
 
-if(MSVC)
-  add_executable(DigiPlaneEditor WIN32)
-  target_compile_options(DigiPlaneEditor PRIVATE /W4)
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup") # Use main instead of WinMain for Windows subsystem
-else()
-  add_executable(DigiPlaneEditor)
-  target_compile_options(DigiPlaneEditor PRIVATE -Wall -Wextra -Wpedantic)
-endif()
+add_executable(DigiPlaneEditor ${PLATFORM})
 
 target_sources(DigiPlaneEditor PRIVATE
 ${CMAKE_CURRENT_LIST_DIR}/Main.cpp

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "DigiPlane/dp_core.hpp"
+#include <Digiplane/core.hpp>
 
 // Application entry point class
 // This class is responsible for initializing the editor

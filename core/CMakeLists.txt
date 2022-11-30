@@ -11,13 +11,13 @@ else()
 endif()
 
 target_sources(DigiPlaneCore PRIVATE
-${CMAKE_CURRENT_LIST_DIR}/init.cpp
-${CMAKE_CURRENT_LIST_DIR}/graphics/window.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/init.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/graphics/window.cpp
 )
 
-target_include_directories(DigiPlaneCore PRIVATE
-${CMAKE_CURRENT_LIST_DIR}/include
+target_include_directories(DigiPlaneCore PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_LIST_DIR}/pch.hpp)
+target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.hpp)
 target_link_libraries(DigiPlaneCore glfw bgfx flecs_static)
