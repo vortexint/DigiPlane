@@ -16,12 +16,24 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#define GLFW_INCLUDE_NONE // We are using GLFW as a window manager of sorts.
+// We are using GLFW as a window manager of sorts.
+#define GLFW_INCLUDE_NONE
+
+// platform specific setup & defines to avoid redundant #ifdef(s)
+#ifdef _WIN32 
+#define GLFW_EXPOSE_NATIVE_WIN32
+#define glfwGetWindowCrossPlatform glfwGetWin32Window
+#elif __linux__
+#define GLFW_EXPOSE_NATIVE_X11
+#define glfwGetWindowCrossPlatform glfwGetX11Window
+#else
+#error Platform not supported.
+#endif
 
 #pragma warning(push, 0)
 
-#include "GLFW/glfw3native.h"
 #include "GLFW/glfw3.h"
+#include "GLFW/glfw3native.h"
 
 #include "bgfx/bgfx.h"
 #include "bgfx/platform.h"
