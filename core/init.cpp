@@ -2,6 +2,7 @@
 #include <Digiplane/core.hpp>
 #include "./pch.hpp"
 #include "./internal.hpp"
+#include "./types.hpp"
 
 namespace Digiplane {
 
@@ -32,6 +33,7 @@ namespace Digiplane {
         while (!glfwWindowShouldClose(_DPCORE::window))
         {
             /* Render here */
+            
 
             /* Swap front and back buffers */
             glfwSwapBuffers(_DPCORE::window);
@@ -39,7 +41,7 @@ namespace Digiplane {
             /* Poll for and process events */
             glfwPollEvents();
         }
-        
+
         bgfx::shutdown();
         glfwTerminate();
         return 0;
