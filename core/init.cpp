@@ -28,7 +28,7 @@ namespace Digiplane {
         /* Make the window's context current */
         glfwMakeContextCurrent(_DPCORE::window);
 
-        /* Loop until the user closes the window */
+        /* Application Loop */
         while (!glfwWindowShouldClose(_DPCORE::window))
         {
             /* Render here */
@@ -39,7 +39,8 @@ namespace Digiplane {
             /* Poll for and process events */
             glfwPollEvents();
         }
-
+        
+        bgfx::shutdown();
         glfwTerminate();
         return 0;
     }
