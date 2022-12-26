@@ -33,7 +33,7 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 You may want to test experimental features before release, so
 clone or download the main branch to any directory, if you are using Git, make sure to run:
 
-```git submodule update --init --recursive```.
+```git submodule update --init --recursive```
 
 ##### It is recommended to use CMake Gui but you can manually generate the project files for the specified compiler via command-line.
 After generating the project files you should be able to build the Engine with the specified build system for most platforms.
