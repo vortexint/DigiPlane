@@ -1,8 +1,6 @@
 #ifndef MESH_HPP
 #define MESH_HPP
 
-#include "../pch.hpp" // evil include to satisfy IDEs
-
 namespace Digiplane {
 
 struct Vertex {

@@ -3,6 +3,9 @@
 
 #include <string>
 
+#include "../types.hpp"
+#include "../geometry/mesh.hpp"
+
 // DPAPI is used to declare public API functions for export as shared library.
 #if defined(_WIN32) && defined(_DIGIPLANE_BUILD_DLL)
     // Building as a Win32 DLL

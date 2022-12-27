@@ -12,7 +12,6 @@ endif()
 
 target_sources(DigiPlaneCore PRIVATE
 ${CMAKE_CURRENT_SOURCE_DIR}/init.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/graphics/window.cpp
 )
 
 target_include_directories(DigiPlaneCore PUBLIC

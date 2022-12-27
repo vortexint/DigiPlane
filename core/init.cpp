@@ -1,8 +1,13 @@
 // Core.cpp
 #include <Digiplane/core.hpp>
 #include "./pch.hpp"
-#include "./internal.hpp"
-#include "./types.hpp"
+
+// used to contain all mutable state variables
+namespace _DPCORE {
+    bool initialized;
+    GLFWwindow* window;
+    bgfx::PlatformData platformData;
+}
 
 namespace Digiplane {
 

@@ -5,6 +5,9 @@ using namespace Digiplane;
 int main()
 {
     initInfo config;
-    /* Initialize */
+    /* Initialize Digiplane */
     Digiplane::Init(&config);
+
+    Digiplane::Mesh mesh;
+
 }
