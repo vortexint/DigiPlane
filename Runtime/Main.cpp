@@ -8,6 +8,4 @@ int main()
     /* Initialize Digiplane */
     Digiplane::Init(&config);
 
-    Digiplane::Mesh mesh;
-
 }

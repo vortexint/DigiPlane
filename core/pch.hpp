@@ -36,6 +36,7 @@
 #include "GLFW/glfw3native.h"
 
 #include "bgfx/bgfx.h"
+
 #include "bgfx/platform.h"
 
 #include "flecs.h"
