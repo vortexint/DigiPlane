@@ -10,6 +10,9 @@
 [submodule "modules/yaml-cpp"]
 	path = modules/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp.git
-[submodule "modules/boost"]
-	path = modules/boost
-	url = https://github.com/boostorg/boost.git
+[submodule "modules/asio"]
+	path = modules/asio
+	url = https://github.com/boostorg/asio.git
+[submodule "modules/locale"]
+	path = modules/locale
+	url = https://github.com/boostorg/locale.git
