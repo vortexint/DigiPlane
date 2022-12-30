@@ -2,10 +2,16 @@
 
 using namespace Digiplane;
 
-int main()
-{
-    initInfo config;
-    /* Initialize Digiplane */
-    Digiplane::Init(&config);
+class RuntimeApp : public ApplicationContext {
+    public:
+        void init() override;
+        void update(float deltaTime) override;
+};
+
+void RuntimeApp::init() {
+    std::cout << "Hello from runtime";
+}
+
+void RuntimeApp::update(float deltaTime) {
 
 }

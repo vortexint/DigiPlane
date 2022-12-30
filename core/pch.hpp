@@ -31,14 +31,19 @@
 #endif
 
 #pragma warning(push, 0)
-
+// graphics
 #include "GLFW/glfw3.h"
 #include "GLFW/glfw3native.h"
-
 #include "bgfx/bgfx.h"
-
 #include "bgfx/platform.h"
 
+// scene graph
 #include "flecs.h"
+
+// network
+//#include "asio.hpp"
+
+// localization
+//#include "locale.hpp"
 
 #pragma warning(pop)

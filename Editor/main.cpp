@@ -11,6 +11,7 @@ int main()
 {
     editorApp = std::make_unique<Application>();
     
+    
     editorApp->init();
 
     // Editor functionality found at Editor.cpp
