@@ -4,8 +4,12 @@
 
 bool devmode = false;
 
-// used to contain all mutable state variables
+// used to contain all core variables
 namespace _DPCORE {
+    // current digiplane version in major.minor format
+    constexpr float version = DIGIPLANE_MAJOR + 0.1f * DIGIPLANE_MINOR;
+    std::string_view systemLanguage;
+
     bool initialized;
     GLFWwindow* window;
     bgfx::PlatformData platformData;
@@ -30,6 +34,8 @@ int main(int argc, char** argv) {
         return -1;
     }
     bgfx::init();
+
+    _DPCORE::systemLanguage = std::locale("").name();
 
     Digiplane::ApplicationContext app;
     app.init();

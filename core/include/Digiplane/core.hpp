@@ -32,14 +32,10 @@ namespace Digiplane {
 
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
     class DPAPI ApplicationContext {
-
-        // mutable
-        static bool shouldExit;
+        static bool quit;
     public:
-        static const float digiplaneVersion;     // current version of Digiplane
-        static const std::string systemLanguage; // system language
 
-        ApplicationContext() {}
+        ApplicationContext()  {}
         ~ApplicationContext() {}
 
         // Native application functions
