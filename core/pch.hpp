@@ -44,6 +44,6 @@
 //#include "asio.hpp"
 
 // localization
-#include "locale"
+//#include "locale.hpp"
 
 #pragma warning(pop)
