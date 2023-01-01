@@ -3,7 +3,8 @@
 using namespace Digiplane;
 
 void RuntimeApp::init() {
-    setWindowTitle("Digiplane Runtime"); // window is null here because
+    setWindowTitle("Digiplane Runtime");
+    setResolution(800, 600);
 }
 
 void RuntimeApp::update() {
