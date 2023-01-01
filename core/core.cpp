@@ -50,10 +50,7 @@ int main(int argc, char** argv) {
         glfwTerminate();
         return -1;
     }
-
-    OutputDebugString("Title is:");
-    OutputDebugString(_DPCORE::windowTitle.c_str());
-
+    
     /*Define BGFX platformData object */
     _DPCORE::platformData.nwh = glfwGetWindowCrossPlatform(_DPCORE::window); // function defined in ./pch.hpp
 
