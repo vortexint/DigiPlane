@@ -53,10 +53,11 @@ namespace Digiplane {
         virtual void update() = 0;
 
         void setWindowTitle(std::string_view title);
+        void setResolution(int width, int height);
 
         // get reference to time struct
-        time& getTimeStruct();
-        window& getWindowStruct();
+        time& getTimeInfo();
+        window& getWindowInfo();
 
 
     };
