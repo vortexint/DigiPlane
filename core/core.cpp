@@ -8,6 +8,8 @@ bool devmode = false;
 namespace _DPCORE {
     // current digiplane version in major.minor format
     constexpr float version = DIGIPLANE_MAJOR + 0.1f * DIGIPLANE_MINOR;
+
+    std::string windowTitle;
     std::string_view systemLanguage;
 
     bool initialized;
@@ -37,16 +39,20 @@ int main(int argc, char** argv) {
 
     _DPCORE::systemLanguage = std::locale("").name();
 
-    Digiplane::ApplicationContext app;
-    app.init();
+    // User application setup, check if nullptr
+    auto userApp = Digiplane::createApp();
+    userApp->init();
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     /* Create a windowed mode window */
-    _DPCORE::window = glfwCreateWindow(800, 600, "Remove this later :0", NULL, NULL);
+    _DPCORE::window = glfwCreateWindow(800, 600, _DPCORE::windowTitle.c_str(), NULL, NULL);
     if (!_DPCORE::window) {
         glfwTerminate();
         return -1;
     }
+
+    OutputDebugString("Title is:");
+    OutputDebugString(_DPCORE::windowTitle.c_str());
 
     /*Define BGFX platformData object */
     _DPCORE::platformData.nwh = glfwGetWindowCrossPlatform(_DPCORE::window); // function defined in ./pch.hpp
@@ -54,9 +60,19 @@ int main(int argc, char** argv) {
     /* Make the window's context current */
     glfwMakeContextCurrent(_DPCORE::window);
 
+    float deltaTime = 0.0f;
+    float lastFrame = 0.0f;
+
     /* Application Loop */
     while (!glfwWindowShouldClose(_DPCORE::window))
     {
+        float currentFrame = (float)glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
+        // update application context
+        userApp->update(deltaTime);
+
         /* Render here */
         
 
@@ -70,4 +86,11 @@ int main(int argc, char** argv) {
     bgfx::shutdown();
     glfwTerminate();
     return 0;
+}
+
+namespace Digiplane {
+    // Application Context definitions
+    void ApplicationContext::setWindowTitle(std::string_view title) {
+        _DPCORE::windowTitle = title.data();
+    }
 }

@@ -33,15 +33,23 @@ namespace Digiplane {
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
     class DPAPI ApplicationContext {
         static bool quit;
+        
     public:
 
-        ApplicationContext()  {}
-        ~ApplicationContext() {}
+        //ApplicationContext()  {}
+        virtual ~ApplicationContext() = default;
 
-        // Native application functions
-        virtual void init() {}
-        virtual void update(float deltaTime) {deltaTime = NULL;}
+        /* Native application functions */
+        virtual void init() = 0;
+        virtual void update(float deltaTime) = 0;
+
+
+        void setWindowTitle(std::string_view title);
+
     };
+
+    extern DPAPI std::unique_ptr<ApplicationContext> createApp();
+
 } // DigiPlane
 
 #endif // CORE_HPP

@@ -1,15 +1,10 @@
-#include <Digiplane/core.hpp>
+#include "./Runtime.hpp"
 
 using namespace Digiplane;
 
-class RuntimeApp : public ApplicationContext {
-    public:
-        void init() override;
-        void update(float deltaTime) override;
-};
-
 void RuntimeApp::init() {
     std::cout << "Hello from runtime";
+    setWindowTitle("Runtime");
 }
 
 void RuntimeApp::update(float deltaTime) {
