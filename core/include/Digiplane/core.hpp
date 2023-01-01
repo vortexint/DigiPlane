@@ -24,15 +24,24 @@
 #define DIGIPLANE_MINOR 1
 
 namespace Digiplane {
-    struct initInfo {
-        std::string title = "New DigiPlane Window";
+    struct window {
+        GLFWwindow* window;
+        std::string_view title = "New Digiplane Window";
         int width  = 800;
         int height = 600;
+    };
+    struct time {
+        float deltaTime = 0.0f;
+        float lastFrame = 0.0f;
     };
 
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
     class DPAPI ApplicationContext {
         static bool quit;
+
+        // create window and tiem
+        window Window;
+        time Time;
         
     public:
 
@@ -41,10 +50,14 @@ namespace Digiplane {
 
         /* Native application functions */
         virtual void init() = 0;
-        virtual void update(float deltaTime) = 0;
-
+        virtual void update() = 0;
 
         void setWindowTitle(std::string_view title);
+
+        // get reference to time struct
+        time& getTimeStruct();
+        window& getWindowStruct();
+
 
     };
 
