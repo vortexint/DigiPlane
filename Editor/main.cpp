@@ -1,19 +1,11 @@
-#include <iostream>
-#include "Editor.hpp"
+#include "./Editor.hpp"
 
-#define EDITOR_NAME "DigiPlane"
+void EditorApp::init() {
+    // set window title to "Digiplane <version with 1 decimal only>"
+    setWindowTitle("Digiplane " + std::to_string(DIGIPLANE_MAJOR) + "." +
+                                  std::to_string(DIGIPLANE_MINOR) + " Editor");
+}
 
-/* Global variables */
+void EditorApp::update() {
 
-std::unique_ptr<Application> editorApp;
-
-int main()
-{
-    editorApp = std::make_unique<Application>();
-    
-    
-    editorApp->init();
-
-    // Editor functionality found at Editor.cpp
-    return 0;   
 }

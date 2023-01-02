@@ -1,28 +1,13 @@
-#ifndef EDITOR_HPP
-#define EDITOR_HPP
-
-#include <iostream>
-#include <string>
+#pragma once
 
 #include <Digiplane/core.hpp>
 
-// Application entry point class
-// This class is responsible for initializing the editor
-class Application {
-
-    bool is_running;
-public:
-    Application(void);
-    ~Application(void);
-
-    // remove copy constructor and assignment operator to avoid multiple instances of the application
-    Application(const Application&) = delete;
-    Application& operator=(const Application&) = delete;
-
-    void init(void){
-        std::cout << "Initialized\n";
-    }
+class EditorApp : public Digiplane::ApplicationContext {
+    public:
+        void init() override;
+        void update() override;
 };
 
-#endif // EDITOR_HPP
-
+std::unique_ptr<Digiplane::ApplicationContext> Digiplane::createApp() {
+    return std::make_unique<EditorApp>();
+}
