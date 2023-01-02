@@ -23,25 +23,28 @@
 #define DIGIPLANE_MAJOR 0
 #define DIGIPLANE_MINOR 1
 
+// The Digiplane namespace is the root namespace for all Digiplane classes and functions.
+// definitions at core.cpp
 namespace Digiplane {
-    struct window {
+    /* Application */
+
+    struct windowInfo {
         GLFWwindow* window;
         std::string_view title = "New Digiplane Window";
-        int width  = 800;
-        int height = 600;
+        int width  = 800, height = 600;
     };
-    struct time {
+    struct timeInfo {
         float deltaTime = 0.0f;
         float lastFrame = 0.0f;
     };
 
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
+
     class DPAPI ApplicationContext {
         static bool quit;
 
-        // create window and tiem
-        window Window;
-        time Time;
+        windowInfo Window;
+        timeInfo Time;
         
     public:
 
@@ -56,13 +59,22 @@ namespace Digiplane {
         void setResolution(int width, int height);
 
         // get reference to time struct
-        time& getTimeInfo();
-        window& getWindowInfo();
+        timeInfo& getTimeInfo();
+        windowInfo& getWindowInfo();
 
 
     };
 
     extern DPAPI std::unique_ptr<ApplicationContext> createApp();
+
+    /* Core interfacing */
+
+    /**
+     * @brief Returns the version of the Digiplane library as a float that can be used for version checking.
+     * @return float 
+     */
+    const float& getVersion();
+
 
 } // DigiPlane
 

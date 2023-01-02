@@ -40,8 +40,8 @@ int main(int argc, char** argv) {
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
     auto userApp = Digiplane::createApp();
-    Digiplane::window& windowInfo = userApp->getWindowInfo();
-    Digiplane::time& Time = userApp->getTimeInfo();
+    Digiplane::windowInfo& windowInfo = userApp->getWindowInfo();
+    Digiplane::timeInfo& Time = userApp->getTimeInfo();
     GLFWwindow*& window = windowInfo.window;
 
     /* Create a windowed mode window */
@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
 }
 
 namespace Digiplane {
-    // Application Context definitions
+    /* Application Context definitions */ 
 
     void ApplicationContext::setWindowTitle(std::string_view title) {
         Window.title = title;
@@ -101,6 +101,14 @@ namespace Digiplane {
         glfwSetWindowSize(Window.window, width, height);
     }
 
-    time& ApplicationContext::getTimeInfo() {return Time;}
-    window& ApplicationContext::getWindowInfo() { return Window;}
+    timeInfo& ApplicationContext::getTimeInfo() {return Time;}
+    windowInfo& ApplicationContext::getWindowInfo() { return Window;}
+
+    /* Core interfacing definitions */
+
+    // reference to digiplane version
+    const float& getVersion() {
+        return _DPCORE::version;
+    }
+
 }
