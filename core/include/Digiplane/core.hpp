@@ -1,5 +1,4 @@
-#ifndef CORE_HPP
-#define CORE_HPP
+#pragma once
 
 #include <string>
 
@@ -31,11 +30,17 @@ namespace Digiplane {
     struct windowInfo {
         GLFWwindow* window;
         std::string_view title = "New Digiplane Window";
-        int width  = 800, height = 600;
+        uint16_t width  = 800, height = 600;
     };
     struct timeInfo {
         float deltaTime = 0.0f;
         float lastFrame = 0.0f;
+        int frameCount = 0;
+    };
+
+    enum class Platform : std::uint8_t {
+        Windows,
+        Linux
     };
 
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
@@ -56,7 +61,7 @@ namespace Digiplane {
         virtual void update() = 0;
 
         void setWindowTitle(std::string_view title);
-        void setResolution(int width, int height);
+        void setResolution(uint16_t width, uint16_t height);
 
         // get reference to time struct
         timeInfo& getTimeInfo();
@@ -77,5 +82,3 @@ namespace Digiplane {
 
 
 } // DigiPlane
-
-#endif // CORE_HPP

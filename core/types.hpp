@@ -1,5 +1,4 @@
-#ifndef TYPES_HPP
-#define TYPES_HPP
+#pragma once
 
 namespace Digiplane {
 
@@ -10,5 +9,3 @@ typedef struct ABGRColor_t {
 } ABGRColor_t;
 
 }
-
-#endif // TYPES_HPP

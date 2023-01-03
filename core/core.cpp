@@ -12,41 +12,35 @@ namespace _DPCORE {
     
     std::string_view systemLanguage;
 
-    bgfx::PlatformData platformData;
+    bgfx::Init bgfxInit;
 }
 
-void doArguments(int argc, char** argv) {
-    for (int i = 1; i < argc; ++i) {
-        std::string arg = argv[i];
-        if (arg == "--devmode" || arg == "-d") {
-            devmode = true;
-            continue;
-        }
-    }
-}
+void doArguments(int argc, char** argv);
 
 // Digiplane entry point 
 int main(int argc, char** argv) {
     doArguments(argc, argv);
+
     /* Initialize the library */
+
+    // TODO: proper logging system
     if(!glfwInit()) {
         std::cerr << "Failed to initialize GLFW code " << glfwGetError(nullptr) << "\n";
         return -1;
     }
-    bgfx::init();
 
     _DPCORE::systemLanguage = std::locale("").name();
-
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
     auto userApp = Digiplane::createApp();
     Digiplane::windowInfo& windowInfo = userApp->getWindowInfo();
     Digiplane::timeInfo& Time = userApp->getTimeInfo();
     GLFWwindow*& window = windowInfo.window;
 
-    /* Create a windowed mode window */
-
-    window = glfwCreateWindow(800, 600, windowInfo.title.data(), NULL, NULL);
+    /* Create a window */
+    
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    
+    window = glfwCreateWindow(windowInfo.width, windowInfo.height, windowInfo.title.data(), nullptr, nullptr);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -54,31 +48,36 @@ int main(int argc, char** argv) {
 
     userApp->init();
 
-    /* Define BGFX platformData object */
-    _DPCORE::platformData.nwh = glfwGetWindowCrossPlatform(window); // function defined in ./pch.hpp
+    /* bgfx initialization */
 
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
+    _DPCORE::bgfxInit.platformData.nwh = glfwGetWindowCrossPlatform(window); // macro function defined in ./pch.hpp
+    //_DPCORE::bgfxInit.type = bgfx::RendererType::Direct3D12;
+    _DPCORE::bgfxInit.resolution.width = windowInfo.width;
+    _DPCORE::bgfxInit.resolution.height = windowInfo.height;
+    _DPCORE::bgfxInit.resolution.reset = BGFX_RESET_VSYNC;
+    bgfx::init(_DPCORE::bgfxInit); 
 
-    float lastFrame = 0.0f;
+    bgfx::setDebug(BGFX_DEBUG_TEXT | BGFX_DEBUG_STATS | BGFX_DEBUG_PROFILER);
+
+    bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x383838d9, 1.0f, 0);
+    bgfx::setViewRect(0, 0, 0, windowInfo.width, windowInfo.height);
 
     /* Application Loop */
     while (!glfwWindowShouldClose(window))
     {
         float currentFrame = (float)glfwGetTime();
-        Time.deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        Time.deltaTime = currentFrame - Time.lastFrame;
+        Time.lastFrame = currentFrame;
 
-        // update application context
+        /* update application context */
         userApp->update();
 
-        /* Render here */
-        
-        
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+        bgfx::touch(0);
 
-        /* Poll for and process events */
+        /* Render here */
+
+        bgfx::frame();
+        Time.frameCount++;
         glfwPollEvents();
     }
 
@@ -95,14 +94,14 @@ namespace Digiplane {
         glfwSetWindowTitle(Window.window, title.data());
     }
 
-    void ApplicationContext::setResolution(int width, int height) {
+    void ApplicationContext::setResolution(uint16_t width, uint16_t height) {
         Window.width = width;
         Window.height = height;
         glfwSetWindowSize(Window.window, width, height);
     }
 
     timeInfo& ApplicationContext::getTimeInfo() {return Time;}
-    windowInfo& ApplicationContext::getWindowInfo() { return Window;}
+    windowInfo& ApplicationContext::getWindowInfo() {return Window;}
 
     /* Core interfacing definitions */
 
@@ -111,4 +110,14 @@ namespace Digiplane {
         return _DPCORE::version;
     }
 
+}
+
+void doArguments(int argc, char** argv)  {
+    for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        if (arg == "--devmode" || arg == "-d") {
+            devmode = true;
+            continue;
+        }
+    }
 }
