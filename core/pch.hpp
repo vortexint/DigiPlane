@@ -42,6 +42,9 @@
 // scene graph
 #include "flecs.h"
 
+// scripting
+#include  "lua.hpp"
+
 // network
 //#include "asio.hpp"
 

@@ -19,6 +19,7 @@ include_directories(
 add_subdirectory(modules/bgfx.cmake)
 add_subdirectory(modules/glfw)
 add_subdirectory(modules/flecs)
+add_subdirectory(modules/lua)
 # intermediary
 add_subdirectory(core)
 # final

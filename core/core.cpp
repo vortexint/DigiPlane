@@ -13,6 +13,8 @@ namespace _DPCORE {
     std::string_view systemLanguage;
 
     bgfx::Init bgfxInit;
+
+    lua_State* luaState;
 }
 
 void doArguments(int argc, char** argv);
@@ -30,7 +32,9 @@ int main(int argc, char** argv) {
     }
 
     _DPCORE::systemLanguage = std::locale("").name();
-
+    _DPCORE::luaState = luaL_newstate();
+    luaL_openlibs(_DPCORE::luaState);
+    
     auto userApp = Digiplane::createApp();
     Digiplane::windowInfo& windowInfo = userApp->getWindowInfo();
     Digiplane::timeInfo& Time = userApp->getTimeInfo();
