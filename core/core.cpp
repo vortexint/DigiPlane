@@ -1,6 +1,6 @@
 // Core.cpp
-#include <Digiplane/core.hpp>
 #include "./pch.hpp"
+#include <Digiplane/core.hpp>
 
 bool devmode = false;
 

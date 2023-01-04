@@ -14,6 +14,8 @@ target_sources(DigiPlaneCore PRIVATE
 ${CMAKE_CURRENT_SOURCE_DIR}/core.cpp
 )
 
+include(graphics/CMakeLists.txt)
+
 target_include_directories(DigiPlaneCore PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/include
 )

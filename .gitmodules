@@ -16,3 +16,6 @@
 [submodule "modules/locale"]
 	path = modules/locale
 	url = https://github.com/boostorg/locale.git
+[submodule "modules/Lua"]
+	path = modules/Lua
+	url = https://github.com/walterschell/Lua.git
