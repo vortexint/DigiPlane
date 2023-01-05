@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/Icon.ico" alt="icon" width="128" height="128">
-  <h1>Digiplane<h5>Formerly project SenNight</h5></h1>
+  <p><h1>Digiplane</h1>Formerly project SenNight</p>
 </div>
 
 
