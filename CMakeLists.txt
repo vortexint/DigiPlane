@@ -21,7 +21,7 @@ add_subdirectory(modules/glfw)
 add_subdirectory(modules/flecs)
 add_subdirectory(modules/lua)
 # intermediary
-add_subdirectory(core)
+add_subdirectory(Core)
 # final
 add_subdirectory(Editor)
 add_subdirectory(Runtime)
