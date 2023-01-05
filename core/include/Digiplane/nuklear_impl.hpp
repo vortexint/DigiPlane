@@ -6,6 +6,8 @@
     you still need Nuklear itself. See https://github.com/Immediate-Mode-UI/Nuklear
 */
 
+#ifdef NK_DIGIPLANE_IMPLEMENTATION
 
 
+#endif // NK_DIGIPLANE_IMPLEMENTATION
 #endif // NUKLEAR_IMPL_HPP
