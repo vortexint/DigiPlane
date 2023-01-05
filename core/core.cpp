@@ -109,9 +109,12 @@ namespace Digiplane {
 
     /* Core interfacing definitions */
 
-    // reference to digiplane version
     const float& getVersion() {
         return _DPCORE::version;
+    }
+    
+    void* getNativeWindowHandle() {
+        return _DPCORE::bgfxInit.platformData.nwh;
     }
 
 }

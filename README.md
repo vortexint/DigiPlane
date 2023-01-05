@@ -3,7 +3,6 @@
   <p><h1>Digiplane</h1>Formerly project SenNight</p>
 </div>
 
-
 ## Introduction
 
 Digiplane is a game framework that makes it easy to create high-quality 2D or 3D games. It provides simple high-level and low-level access to core features such as using HLSL/GLSL shaders, creating and managing scenes, and uses a entity-component system. Digiplane also supports Linux and Windows.
@@ -11,11 +10,11 @@ Digiplane is a game framework that makes it easy to create high-quality 2D or 3D
 If you would like to try out the framework, check out the [tutorial](https://digiplane.readthedocs.io/en/latest/tutorial.html).
 
 ## Features
-
 - HLSL/GLSL shader support - Create your own shaders and easily use them in Digiplane.
 - Entity-component system ([flecs](https://github.com/SanderMertens/flecs)) - Create your game objects in a component-based way.
 - Scene management - Make your game logic modular by creating scenes that contain your entities and components.
 - Linux and Windows support - The framework is cross-platform, so you can easily build your games to both platforms.
+- Version agnostic implementation of popular immediate mode GUI libraries: [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear) and [Dear ImGui](https://github.com/ocornut/imgui) are supported.
 
 ## Getting Started
 

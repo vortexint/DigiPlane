@@ -76,10 +76,18 @@ namespace Digiplane {
     /* Core interfacing */
 
     /**
-     * @brief Returns the version of the Digiplane library as a float that can be used for version checking.
+     * @brief Returns a reference the version of the Digiplane library as a float that can be used for version checking.
      * @return float 
      */
     const float& getVersion();
+
+    /**
+     * @brief Returns a pointer to the native window handle of the application.
+     * @return void* 
+     */
+    void* getNativeWindowHandle();
+
+    
 
 
 } // DigiPlane
