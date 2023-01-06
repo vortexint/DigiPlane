@@ -20,21 +20,33 @@
     #define DPAPI
 #endif
 
-/// plugins
+#define DIGIPLANE_MAJOR 0
+#define DIGIPLANE_MINOR 1
+
+/* Plugins */
 
 #if defined(DIGIPLANE_NK_PLUGIN)
+#define NK_INCLUDE_FIXED_TYPES
+#define NK_INCLUDE_STANDARD_IO
+#define NK_INCLUDE_STANDARD_VARARGS
+#define NK_INCLUDE_DEFAULT_ALLOCATOR
+#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
+#define NK_INCLUDE_FONT_BAKING
+#define NK_INCLUDE_DEFAULT_FONT
+#include "nuklear.h"
 #ifndef NK_NUKLEAR_H_
-    #error "Please include nuklear.h before including core.hpp"
+    #error "Unable to include "nuklear.h", please make sure it is in your include path."
 #endif
 #include "../plugins/nuklear_impl.hpp"
 #endif
+
 #if defined(DIGIPLANE_IMGUI_PLUGIN)
+#include "imgui.h"
+#ifndef IMGUI_API
+    #error "Unable to include "imgui.h", please make sure it is in your include path."
+#endif
 #include "../plugins/imgui_impl.hpp"
 #endif
-
-
-#define DIGIPLANE_MAJOR 0
-#define DIGIPLANE_MINOR 1
 
 // The Digiplane namespace is the root namespace for all Digiplane classes and functions.
 // definitions at core.cpp
