@@ -49,6 +49,14 @@ int main(int argc, char** argv) {
         glfwTerminate();
         return -1;
     }
+    
+    /* Handle plugins */
+    #if defined(DIGIPLANE_NK_PLUGIN)
+
+    #endif
+    #if defined(DIGIPLANE_IMGUI_PLUGIN)
+
+    #endif
 
     userApp->init();
 
@@ -69,6 +77,7 @@ int main(int argc, char** argv) {
     /* Application Loop */
     while (!glfwWindowShouldClose(window))
     {
+        glfwPollEvents();
         float currentFrame = (float)glfwGetTime();
         Time.deltaTime = currentFrame - Time.lastFrame;
         Time.lastFrame = currentFrame;
@@ -82,7 +91,6 @@ int main(int argc, char** argv) {
 
         bgfx::frame();
         Time.frameCount++;
-        glfwPollEvents();
     }
 
     bgfx::shutdown();

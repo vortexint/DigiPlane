@@ -20,6 +20,19 @@
     #define DPAPI
 #endif
 
+/// plugins
+
+#if defined(DIGIPLANE_NK_PLUGIN)
+#ifndef NK_NUKLEAR_H_
+    #error "Please include nuklear.h before including core.hpp"
+#endif
+#include "../plugins/nuklear_impl.hpp"
+#endif
+#if defined(DIGIPLANE_IMGUI_PLUGIN)
+#include "../plugins/imgui_impl.hpp"
+#endif
+
+
 #define DIGIPLANE_MAJOR 0
 #define DIGIPLANE_MINOR 1
 
