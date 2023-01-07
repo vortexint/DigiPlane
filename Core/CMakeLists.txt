@@ -21,4 +21,4 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.hpp)
-target_link_libraries(DigiPlaneCore glfw bgfx flecs_static lua_static)
+target_link_libraries(DigiPlaneCore glfw flecs_static lua_static)

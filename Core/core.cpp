@@ -12,8 +12,6 @@ namespace _DPCORE {
     
     std::string_view systemLanguage;
 
-    bgfx::Init bgfxInit;
-
     lua_State* luaState;
 }
 
@@ -60,20 +58,6 @@ int main(int argc, char** argv) {
 
     userApp->init();
 
-    /* bgfx initialization */
-
-    _DPCORE::bgfxInit.platformData.nwh = glfwGetWindowCrossPlatform(window); // macro function defined in ./pch.hpp
-    //_DPCORE::bgfxInit.type = bgfx::RendererType::Direct3D12;
-    _DPCORE::bgfxInit.resolution.width = windowInfo.width;
-    _DPCORE::bgfxInit.resolution.height = windowInfo.height;
-    _DPCORE::bgfxInit.resolution.reset = BGFX_RESET_VSYNC;
-    bgfx::init(_DPCORE::bgfxInit); 
-
-    bgfx::setDebug(BGFX_DEBUG_TEXT | BGFX_DEBUG_STATS | BGFX_DEBUG_PROFILER);
-
-    bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x383838d9, 1.0f, 0);
-    bgfx::setViewRect(0, 0, 0, windowInfo.width, windowInfo.height);
-
     /* Application Loop */
     while (!glfwWindowShouldClose(window))
     {
@@ -85,15 +69,11 @@ int main(int argc, char** argv) {
         /* update application context */
         userApp->update();
 
-        bgfx::touch(0);
-
         /* Render here */
 
-        bgfx::frame();
         Time.frameCount++;
     }
 
-    bgfx::shutdown();
     glfwTerminate();
     return 0;
 }
@@ -122,7 +102,7 @@ namespace Digiplane {
     }
     
     void* getNativeWindowHandle() {
-        return _DPCORE::bgfxInit.platformData.nwh;
+        return nullptr; // TODO: implement
     }
 
 }

@@ -41,7 +41,7 @@
 #endif
 
 #if defined(DIGIPLANE_IMGUI_PLUGIN)
-#include "imgui.h"
+//#include "imgui.h"
 #ifndef IMGUI_API
     #error "Unable to include "imgui.h", please make sure it is in your include path."
 #endif

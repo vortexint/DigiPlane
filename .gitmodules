@@ -1,9 +1,6 @@
 [submodule "modules/flecs"]
 	path = modules/flecs
 	url = https://github.com/SanderMertens/flecs.git
-[submodule "modules/bgfx.cmake"]
-	path = modules/bgfx.cmake
-	url = https://github.com/bkaradzic/bgfx.cmake
 [submodule "modules/glfw"]
 	path = modules/glfw
 	url = https://github.com/glfw/glfw.git
@@ -13,9 +10,15 @@
 [submodule "modules/asio"]
 	path = modules/asio
 	url = https://github.com/boostorg/asio.git
-[submodule "modules/locale"]
-	path = modules/locale
-	url = https://github.com/boostorg/locale.git
 [submodule "modules/Lua"]
 	path = modules/Lua
 	url = https://github.com/walterschell/Lua.git
+[submodule "modules/DiligentCore"]
+	path = modules/DiligentCore
+	url = https://github.com/DiligentGraphics/DiligentCore.git
+[submodule "modules/DiligentFX"]
+	path = modules/DiligentFX
+	url = https://github.com/DiligentGraphics/DiligentFX.git
+[submodule "modules/DiligentTools"]
+	path = modules/DiligentTools
+	url = https://github.com/DiligentGraphics/DiligentTools.git
