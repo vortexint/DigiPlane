@@ -18,7 +18,15 @@ include(graphics/CMakeLists.txt)
 
 target_include_directories(DigiPlaneCore PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/include
+
 )
 
 target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.hpp)
-target_link_libraries(DigiPlaneCore glfw flecs_static lua_static)
+target_compile_definitions(DigiPlaneCore PRIVATE ENGINE_DLL=0)
+target_link_libraries(DigiPlaneCore flecs_static lua_static
+                      Diligent-Common
+                      Diligent-GraphicsTools
+                      Diligent-RenderStateNotation
+                      Diligent-GraphicsEngineD3D11-static
+                      Diligent-GraphicsEngineD3D12-static
+                      glfw)
