@@ -6,7 +6,7 @@ nk_context* ctx;
 
 void EditorApp::init() {
     setWindowTitle("Digiplane " + std::to_string(DIGIPLANE_MAJOR) + "." + std::to_string(DIGIPLANE_MINOR) + " Forge");
-    //nk_digiplane_init();
+    nk_digiplane_init();
 }
 
 void EditorApp::update() {
