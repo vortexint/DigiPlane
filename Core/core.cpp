@@ -12,6 +12,11 @@ namespace _DPCORE {
     // current digiplane version in major.minor format
     constexpr float version = DIGIPLANE_MAJOR + 0.1f * DIGIPLANE_MINOR;
     bool initialized;
+
+    Diligent::IEngineFactory* engineFactory;
+    Diligent::IRenderDevice* renderDevice;
+    Diligent::IDeviceContext* deviceContext;
+    Diligent::SwapChainDesc SCDesc;
     
     std::string_view systemLanguage;
 
@@ -32,24 +37,42 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    _DPCORE::systemLanguage = std::locale("").name();
+    /* Initialize Lua */
+
     _DPCORE::luaState = luaL_newstate();
     luaL_openlibs(_DPCORE::luaState);
     
     auto userApp = Digiplane::createApp();
     Digiplane::windowInfo& windowInfo = userApp->getWindowInfo();
     Digiplane::timeInfo& Time = userApp->getTimeInfo();
-    GLFWwindow*& window = windowInfo.window;
+    GLFWwindow*& m_window = windowInfo.window;
 
     /* Create a window */
     
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     
-    window = glfwCreateWindow(windowInfo.width, windowInfo.height, windowInfo.title.data(), nullptr, nullptr);
-    if (!window) {
+    m_window = glfwCreateWindow(windowInfo.width, windowInfo.height, windowInfo.title.data(), nullptr, nullptr);
+    if (!m_window) {
         glfwTerminate();
         return -1;
     }
+
+    glfwSetWindowUserPointer(m_window, userApp.get());
+
+    /* Initialize Diligent Engine */
+
+    #if PLATFORM_WIN32
+        Diligent::Win32NativeWindow Window{glfwGetWin32Window(m_window)};
+    #endif
+    #if PLATFORM_LINUX
+        Diligent::LinuxNativeWindow Window;
+        Window.WindowId = glfwGetX11Window(m_window);
+        Window.pDisplay = glfwGetX11Display();
+        if (DevType == RENDER_DEVICE_TYPE_GL)
+            glfwMakeContextCurrent(m_window);
+    #endif
+
+    _DPCORE::SCDesc;
     
     /* Handle plugins */
     #if defined(DIGIPLANE_NK_PLUGIN)
@@ -59,10 +82,12 @@ int main(int argc, char** argv) {
 
     #endif
 
+    _DPCORE::systemLanguage = std::locale("").name();
+
     userApp->init();
 
     /* Application Loop */
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(m_window))
     {
         glfwPollEvents();
         float currentFrame = (float)glfwGetTime();
