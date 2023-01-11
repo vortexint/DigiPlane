@@ -13,10 +13,11 @@ namespace _DPCORE {
     constexpr float version = DIGIPLANE_MAJOR + 0.1f * DIGIPLANE_MINOR;
     bool initialized;
 
-    Diligent::IEngineFactory* engineFactory;
-    Diligent::IRenderDevice* renderDevice;
-    Diligent::IDeviceContext* deviceContext;
-    Diligent::SwapChainDesc SCDesc;
+    Diligent::RENDER_DEVICE_TYPE DevType;
+    Diligent::IRenderDevice*  m_pDevice;
+    Diligent::IDeviceContext* m_pImmediateContext;
+    Diligent::SwapChainDesc   SCDesc;
+    Diligent::ISwapChain*     m_pSwapChain;
     
     std::string_view systemLanguage;
 
@@ -63,16 +64,38 @@ int main(int argc, char** argv) {
 
     #if PLATFORM_WIN32
         Diligent::Win32NativeWindow Window{glfwGetWin32Window(m_window)};
+        _DPCORE::DevType = Diligent::RENDER_DEVICE_TYPE_D3D12;
     #endif
     #if PLATFORM_LINUX
         Diligent::LinuxNativeWindow Window;
         Window.WindowId = glfwGetX11Window(m_window);
         Window.pDisplay = glfwGetX11Display();
-        if (DevType == RENDER_DEVICE_TYPE_GL)
-            glfwMakeContextCurrent(m_window);
+        _DPCORE::DevType = RENDER_DEVICE_TYPE_GL
+        glfwMakeContextCurrent(m_window);
     #endif
 
-    _DPCORE::SCDesc;
+    switch (_DPCORE::DevType) {
+        case Diligent::RENDER_DEVICE_TYPE_D3D11:
+        {
+            auto* pFactoryD3D11 = Diligent::GetEngineFactoryD3D11();
+            Diligent::EngineD3D11CreateInfo EngineCI;
+            pFactoryD3D11->CreateDeviceAndContextsD3D11(EngineCI, &_DPCORE::m_pDevice, &_DPCORE::m_pImmediateContext);
+            pFactoryD3D11->CreateSwapChainD3D11(_DPCORE::m_pDevice, _DPCORE::m_pImmediateContext, _DPCORE::SCDesc, Diligent::FullScreenModeDesc{} ,Window, &_DPCORE::m_pSwapChain);
+        }
+        break;
+        case Diligent::RENDER_DEVICE_TYPE_D3D12:
+        {
+            auto* pFactoryD3D12 = Diligent::GetEngineFactoryD3D12();
+            Diligent::EngineD3D12CreateInfo EngineCI;
+            pFactoryD3D12->CreateDeviceAndContextsD3D12(EngineCI, &_DPCORE::m_pDevice, &_DPCORE::m_pImmediateContext);
+            pFactoryD3D12->CreateSwapChainD3D12(_DPCORE::m_pDevice, _DPCORE::m_pImmediateContext, _DPCORE::SCDesc, Diligent::FullScreenModeDesc{} ,Window, &_DPCORE::m_pSwapChain);
+        }
+        break;
+        default:
+            std::cerr << "Invalid device type\n";
+            break;
+    }
+
     
     /* Handle plugins */
     #if defined(DIGIPLANE_NK_PLUGIN)
@@ -136,10 +159,21 @@ namespace Digiplane {
 }
 
 void doArguments(int argc, char** argv)  {
+#if PLATFORM_LINUX
+#define _stricmp strcasecmp
+#endif
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
         if (arg == "--devmode" || arg == "-d") {
             devmode = true;
+            continue;
+        }
+        if (arg == "--dx11") {
+            _DPCORE::DevType = Diligent::RENDER_DEVICE_TYPE_D3D11;
+            continue;
+        }
+        if (arg == "--dx12") {
+            _DPCORE::DevType = Diligent::RENDER_DEVICE_TYPE_D3D12;
             continue;
         }
     }
