@@ -1,9 +1,6 @@
 [submodule "modules/flecs"]
 	path = modules/flecs
 	url = https://github.com/SanderMertens/flecs.git
-[submodule "modules/glfw"]
-	path = modules/glfw
-	url = https://github.com/glfw/glfw.git
 [submodule "modules/yaml-cpp"]
 	path = modules/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp.git
