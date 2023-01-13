@@ -26,7 +26,7 @@ target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.h
 
 target_compile_definitions(DigiPlaneCore PRIVATE UNICODE ENGINE_DLL=0)
 
-target_link_libraries(DigiPlaneCore flecs_static lua_static glfw
+target_link_libraries(DigiPlaneCore flecs_static lua_static
                       Diligent-Common
                       Diligent-GraphicsTools
                       Diligent-RenderStateNotation

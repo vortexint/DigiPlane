@@ -43,6 +43,10 @@ namespace Digiplane {
         static bool quit;
         
     public:
+        ApplicationContext() {}
+        ~ApplicationContext() {}
+
+        bool initializeGraphicsEngine(HWND hWnd);
 
     };
 

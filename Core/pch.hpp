@@ -38,9 +38,6 @@
 
 #pragma warning(push, 0)
 // graphics
-#include "GLFW/glfw3.h"
-#include "GLFW/glfw3native.h"
-
 #include "RefCntAutoPtr.hpp"
 #include "RenderDevice.h"
 #include "DeviceContext.h"
