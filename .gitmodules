@@ -10,12 +10,6 @@
 [submodule "modules/Lua"]
 	path = modules/Lua
 	url = https://github.com/walterschell/Lua.git
-[submodule "modules/DiligentCore"]
-	path = modules/DiligentCore
-	url = https://github.com/DiligentGraphics/DiligentCore.git
-[submodule "modules/DiligentFX"]
-	path = modules/DiligentFX
-	url = https://github.com/DiligentGraphics/DiligentFX.git
-[submodule "modules/DiligentTools"]
-	path = modules/DiligentTools
-	url = https://github.com/DiligentGraphics/DiligentTools.git
+[submodule "modules/nvrhi"]
+	path = modules/nvrhi
+	url = https://github.com/NVIDIAGameWorks/nvrhi.git
