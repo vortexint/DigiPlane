@@ -1,12 +1,8 @@
 #include "./Runtime.hpp"
 
-using namespace Digiplane;
-
-void RuntimeApp::init() {
-    setWindowTitle("Digiplane Runtime");
-    setResolution(800, 600);
-}
-
-void RuntimeApp::update() {
-
+int main(int argc, char** argv) {
+    Digiplane::ApplicationContext* app = new Digiplane::ApplicationContext();
+    //app->run();
+    delete app;
+    return 0;
 }

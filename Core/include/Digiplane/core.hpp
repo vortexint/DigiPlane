@@ -41,12 +41,15 @@ namespace Digiplane {
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
     class ApplicationContext {
         static bool quit;
+
+        nvrhi::d3d12::DeviceDesc deviceDesc;
+        nvrhi::DeviceHandle nvrhiDevice;
         
     public:
-        ApplicationContext() {}
+        ApplicationContext();
         ~ApplicationContext() {}
 
-        bool initializeGraphicsEngine(HWND hWnd);
+        bool initializeGraphicsEngine();
 
     };
 

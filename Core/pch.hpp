@@ -37,13 +37,9 @@
 #define NOMINMAX // Windows headers define min/max as macros, which messes up std functions
 
 #pragma warning(push, 0)
+
 // graphics
-#include "RefCntAutoPtr.hpp"
-#include "RenderDevice.h"
-#include "DeviceContext.h"
-#include "SwapChain.h"
-#include "RenderStateNotationLoader.h"
-#include "BasicMath.hpp"
+#include <nvrhi/d3d12.h>
 
 // scene graph
 #include "flecs.h"

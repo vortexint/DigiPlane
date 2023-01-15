@@ -16,11 +16,7 @@ include_directories(
 )
 
 # foundation TODO: use find_package instead of add_subdirectory
-
-add_subdirectory(modules/glfw)
-add_subdirectory(modules/DiligentCore)
-add_subdirectory(modules/DiligentTools)
-add_subdirectory(modules/DiligentFX)
+add_subdirectory(modules/nvrhi)
 add_subdirectory(modules/flecs)
 add_subdirectory(modules/lua)
 # intermediary
