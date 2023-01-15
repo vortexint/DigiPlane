@@ -26,4 +26,4 @@ target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.h
 
 target_compile_definitions(DigiPlaneCore PRIVATE UNICODE)
 
-target_link_libraries(DigiPlaneCore flecs_static lua_static nvrhi  nvrhi_d3d12)  
+target_link_libraries(DigiPlaneCore flecs_static lua_static OpenAL nvrhi nvrhi_d3d12)  

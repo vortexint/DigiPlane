@@ -18,6 +18,7 @@ include_directories(
 # foundation TODO: use find_package instead of add_subdirectory
 add_subdirectory(modules/nvrhi)
 add_subdirectory(modules/flecs)
+add_subdirectory(modules/openal-soft)
 add_subdirectory(modules/lua)
 # intermediary
 add_subdirectory(Core)

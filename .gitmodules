@@ -13,3 +13,6 @@
 [submodule "modules/nvrhi"]
 	path = modules/nvrhi
 	url = https://github.com/NVIDIAGameWorks/nvrhi.git
+[submodule "modules/openal-soft"]
+	path = modules/openal-soft
+	url = https://github.com/kcat/openal-soft.git
