@@ -44,6 +44,7 @@ namespace Digiplane {
 
         nvrhi::d3d12::DeviceDesc deviceDesc;
         nvrhi::DeviceHandle nvrhiDevice;
+        //nvrhi::RefCountPtr<nvrhi::d3d12::ID3D12Device> d3d12Device;
         
     public:
         ApplicationContext();

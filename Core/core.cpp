@@ -12,14 +12,21 @@ namespace _DPCORE {
     std::string_view systemLanguage;
     lua_State* luaState;
 
-    class MyMessageCallback : public IMessageCallback
-    {
+    class MyMessageCallback : public IMessageCallback {
     public:
     void message(MessageSeverity severity, const char* messageText) override
     {
         // ADD LOGGING HERE
         std::cerr << "ERROR, Severity " <<  static_cast<uint8_t>(severity) << ": " << messageText << std::endl;
     }
+
+    
+    };
+
+    class MyDevice : public ID3D12Device {
+    public:
+        MyDevice() {}
+        ~MyDevice() {}
     };
     
 };
@@ -33,8 +40,8 @@ namespace Digiplane {
         
         _DPCORE::MyMessageCallback myMessageCallback;
         deviceDesc.errorCB = &myMessageCallback;
-        deviceDesc.pDevice = d3d12Device;
-        deviceDesc.pGraphicsCommandQueue = d3d12GraphicsCommandQueue;
+        //deviceDesc.pDevice = d3d12Device;
+        //deviceDesc.pGraphicsCommandQueue = d3d12GraphicsCommandQueue;
 
         nvrhi::DeviceHandle nvrhiDevice = nvrhi::d3d12::createDevice(deviceDesc);
     }
