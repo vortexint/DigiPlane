@@ -7,6 +7,7 @@ nk_context* ctx;
 int main(int argc, char** argv) {
     Digiplane::ApplicationContext* app = new Digiplane::ApplicationContext();
     //app->run();
+    // do the
     delete app;
     return 0;
 }
