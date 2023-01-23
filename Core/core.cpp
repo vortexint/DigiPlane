@@ -24,6 +24,10 @@ namespace Digiplane {
         ECS_COMPONENT(world, Velocity);
     }
 
+    void ApplicationContext::run(void) {
+
+    }
+
     bool ApplicationContext::processCmdArg(const char* argv) {
         std::string arg = argv;
         std::transform(arg.begin(), arg.end(), arg.begin(), ::tolower);

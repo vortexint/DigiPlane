@@ -49,6 +49,8 @@ namespace Digiplane {
         ApplicationContext();
         ~ApplicationContext() {}
 
+        void run(void);
+
         // Returns a reference to the world object.
         ecs_world_t* getWorld() {return world;}
 

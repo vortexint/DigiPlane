@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
         }
     }
 
-    //app->run();
+    context.run();
 
     return 0;
 }
