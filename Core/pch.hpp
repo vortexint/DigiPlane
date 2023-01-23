@@ -39,7 +39,6 @@
 #pragma warning(push, 0)
 
 // graphics
-#include <nvrhi/d3d12.h>
 
 // scene graph
 #include "flecs.h"

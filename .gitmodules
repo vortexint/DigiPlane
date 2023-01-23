@@ -10,9 +10,9 @@
 [submodule "modules/Lua"]
 	path = modules/Lua
 	url = https://github.com/walterschell/Lua.git
-[submodule "modules/nvrhi"]
-	path = modules/nvrhi
-	url = https://github.com/NVIDIAGameWorks/nvrhi.git
 [submodule "modules/openal-soft"]
 	path = modules/openal-soft
 	url = https://github.com/kcat/openal-soft.git
+[submodule "modules/MethaneKit"]
+	path = modules/MethaneKit
+	url = https://github.com/MethanePowered/MethaneKit.git
