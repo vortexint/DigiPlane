@@ -8,26 +8,26 @@ typedef struct ABGRColor_t {
     unsigned char r, g, b, a;
 } ABGRColor_t;
 
-// Vector3
+// Vector3_t
 typedef struct Vector3_t {
     float x, y, z;
-    Vector3 operator+(const Vector3& other) { return Vector3 { x + other.x, y + other.y, z + other.z }; }
-    Vector3& operator+=(const Vector3& other) { return *this = *this + other; }
-    Vector3 operator-(const Vector3& other) { return Vector3 { x - other.x, y - other.y, z - other.z }; }
-    Vector3& operator-=(const Vector3& other) { return *this = *this - other; }
+    Vector3_t operator+(const Vector3_t& other) { return Vector3_t { x + other.x, y + other.y, z + other.z }; }
+    Vector3_t& operator+=(const Vector3_t& other) { return *this = *this + other; }
+    Vector3_t operator-(const Vector3_t& other) { return Vector3_t { x - other.x, y - other.y, z - other.z }; }
+    Vector3_t& operator-=(const Vector3_t& other) { return *this = *this - other; }
 } Vector3_t;
 
 typedef struct Quaternion_t {
     float x, y, z, w;
-    Quaternion operator*(const Quaternion& other) {
-        return Quaternion {
+    Quaternion_t operator*(const Quaternion_t& other) {
+        return Quaternion_t {
             w * other.x + x * other.w + y * other.z - z * other.y,
             w * other.y + y * other.w + z * other.x - x * other.z,
             w * other.z + z * other.w + x * other.y - y * other.x,
             w * other.w - x * other.x - y * other.y - z * other.z
         };
     }
-    Quaternion& operator*=(const Quaternion& other) { return *this = *this * other; }
+    Quaternion_t& operator*=(const Quaternion_t& other) { return *this = *this * other; }
 } Quaternion_t;
 
 // Position, rotation and scale of an object.

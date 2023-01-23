@@ -52,7 +52,9 @@ namespace Digiplane {
         // Returns a reference to the world object.
         ecs_world_t* getWorld() {return world;}
 
-
+        // processCmdArg is used to parse command line arguments and set the desired application initialization behavior.
+        // If the argument is not using the "-dp" prefix, it is ignored.
+        bool processCmdArg(const char* arg);
 
     };
 

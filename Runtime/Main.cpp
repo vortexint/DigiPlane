@@ -1,8 +1,17 @@
+#include <iostream>
+
 #include "./Runtime.hpp"
 
 int main(int argc, char** argv) {
-    Digiplane::ApplicationContext* app = new Digiplane::ApplicationContext();
+    Digiplane::ApplicationContext context;
+    // for each argument
+    for (int i = 1; i < argc; i++) {
+        if (context.processCmdArg(argv[i])) {
+            return 1; // invalid digiplane command
+        }
+    }
+
     //app->run();
-    delete app;
+
     return 0;
 }

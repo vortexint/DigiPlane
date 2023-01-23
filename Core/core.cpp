@@ -24,9 +24,17 @@ namespace Digiplane {
         ECS_COMPONENT(world, Velocity);
     }
 
-
-    bool ProcessCommandLine(const char* CmdLine) {
-        return true;
+    bool ApplicationContext::processCmdArg(const char* argv) {
+        std::string arg = argv;
+        std::transform(arg.begin(), arg.end(), arg.begin(), ::tolower);
+        if (arg == "-dp_vulkan") {
+            // set vulkan as rendering backend
+        } else if (arg == "-dp_dx12") {
+            // set dx12 as rendering backend
+        }
+        else
+            if (arg.find("-dp") == 0) {return 1;} // invalid digiplane command
+        return 0; // ignored/valid command
     }
 
     /* Core interfacing definitions */
