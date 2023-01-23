@@ -14,15 +14,16 @@ namespace _DPCORE {
 namespace Digiplane {
     /* Application Context definitions */ 
 
-    // applicationcontext constructor
+    // ApplicationContext constructor
     ApplicationContext::ApplicationContext() {
-        
+        // initialize world with ecs_init();
+        world = ecs_init();
+
+        /* Declare core components */
+        ECS_COMPONENT(world, Transform);
+        ECS_COMPONENT(world, Velocity);
     }
 
-    bool ApplicationContext::initializeGraphicsEngine() {
-        
-        return true;
-    }
 
     bool ProcessCommandLine(const char* CmdLine) {
         return true;

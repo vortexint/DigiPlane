@@ -43,12 +43,16 @@ namespace Digiplane {
     private:
         static bool quit;
 
+        ecs_world_t* world;
         
     public:
         ApplicationContext();
         ~ApplicationContext() {}
 
-        bool initializeGraphicsEngine();
+        // Returns a reference to the world object.
+        ecs_world_t* getWorld() {return world;}
+
+
 
     };
 
