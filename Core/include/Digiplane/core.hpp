@@ -19,7 +19,9 @@
 #define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
 #define NK_INCLUDE_FONT_BAKING
 #define NK_INCLUDE_DEFAULT_FONT
+#pragma warning(push, 0)
 #include "nuklear.h"
+#pragma warning(pop)
 #ifndef NK_NUKLEAR_H_
     #error "Unable to include "nuklear.h", please make sure it is in your include path."
 #endif
@@ -27,7 +29,9 @@
 #endif
 
 #if defined(DIGIPLANE_IMGUI_PLUGIN)
+#pragma warning(push, 0)
 //#include "imgui.h"
+#pragma warning(pop)
 #ifndef IMGUI_API
     #error "Unable to include "imgui.h", please make sure it is in your include path."
 #endif
@@ -43,20 +47,18 @@ namespace Digiplane {
     private:
         static bool quit;
 
-        ecs_world_t* world;
+        flecs::world world;
         
     public:
         ApplicationContext();
         ~ApplicationContext() {}
 
-        void run(void);
-
         // Returns a reference to the world object.
-        ecs_world_t* getWorld() {return world;}
+        flecs::world& getWorld(void) {return world;}
 
         // processCmdArg is used to parse command line arguments and set the desired application initialization behavior.
         // If the argument is not using the "-dp" prefix, it is ignored.
-        bool processCmdArg(const char* arg);
+        bool processCmdArg(const char* argv);
 
     };
 

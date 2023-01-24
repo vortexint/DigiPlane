@@ -1,6 +1,7 @@
 project(DigiPlaneEditor C CXX)
 
 add_executable(DigiPlaneEditor)
+set_target_properties(DigiPlaneEditor PROPERTIES OUTPUT_NAME "Editor")
 
 target_sources(DigiPlaneEditor PRIVATE
 ${CMAKE_CURRENT_LIST_DIR}/Main.cpp

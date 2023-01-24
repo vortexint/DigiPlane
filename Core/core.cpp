@@ -16,28 +16,22 @@ namespace Digiplane {
 
     // ApplicationContext constructor
     ApplicationContext::ApplicationContext() {
-        // initialize world with ecs_init();
-        world = ecs_init();
+        lua_State* L = luaL_newstate();
 
-        /* Declare core components */
-        ECS_COMPONENT(world, Transform);
-        ECS_COMPONENT(world, Velocity);
-    }
-
-    void ApplicationContext::run(void) {
-
+        // register new entity named Viewport with transform component
+        auto viewport = world.entity("Viewport");
+        viewport.add<Transform>();
+        viewport.set<Transform>({0, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 
     bool ApplicationContext::processCmdArg(const char* argv) {
         std::string arg = argv;
-        std::transform(arg.begin(), arg.end(), arg.begin(), ::tolower);
         if (arg == "-dp_vulkan") {
             // set vulkan as rendering backend
         } else if (arg == "-dp_dx12") {
             // set dx12 as rendering backend
         }
-        else
-            if (arg.find("-dp") == 0) {return 1;} // invalid digiplane command
+        else if (arg.find("-dp") == 0 && arg != "-dp_vulkan" && arg != "-dp_dx12") {return 1;} // invalid digiplane command
         return 0; // ignored/valid command
     }
 

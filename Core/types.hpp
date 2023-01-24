@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIGIPLANE_TYPES_HPP
+#define DIGIPLANE_TYPES_HPP
 
 namespace Digiplane {
 
@@ -31,15 +32,17 @@ typedef struct Quaternion_t {
 } Quaternion_t;
 
 // Position, rotation and scale of an object.
-typedef struct Transform {
+struct Transform {
     Vector3_t position;
     Quaternion_t rotation;
     Vector3_t scale;
-} Transform;
+};
 
 // Velocity of an object
-typedef struct Velocity {
+struct Velocity {
     Vector3_t velocity;
-} Velocity;
+};
 
 }
+
+#endif
