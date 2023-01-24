@@ -4,10 +4,12 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_library(DigiPlaneCore)
 
-if(MSVC)
-  target_compile_options(DigiPlaneCore PRIVATE /W4)
-else()
-  target_compile_options(DigiPlaneCore PRIVATE -Wall -Wextra -Wpedantic)
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+  message(STATUS "GCC detected, adding compile options")
+  add_compile_options(-O3 -Wall -Wextra -Wpedantic)
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+  message(STATUS "MSVC detected, adding compile options")
+  add_compile_options(/W4 /Ox)
 endif()
 
 target_sources(DigiPlaneCore PRIVATE
