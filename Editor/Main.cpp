@@ -14,5 +14,7 @@ int main(int argc, char** argv) {
         }
     }
 
+    flecs::world* scene = context.getWorld();
+
     return 0;
 }

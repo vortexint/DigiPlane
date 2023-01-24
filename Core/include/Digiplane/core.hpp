@@ -53,8 +53,8 @@ namespace Digiplane {
         ApplicationContext();
         ~ApplicationContext() {}
 
-        // Returns a reference to the world object.
-        flecs::world& getWorld(void) {return world;}
+        // Returns a pointer to the world object.
+        flecs::world* getWorld() { return &world; }
 
         // processCmdArg is used to parse command line arguments and set the desired application initialization behavior.
         // If the argument is not using the "-dp" prefix, it is ignored.
