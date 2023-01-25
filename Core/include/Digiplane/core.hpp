@@ -48,6 +48,8 @@ namespace Digiplane {
         static bool quit;
 
         flecs::world world;
+
+        Diligent::RefCntAutoPtr<Diligent::IPipelineState> m_pPSO; // Pipeline State Object used to render the scene
         
     public:
         ApplicationContext();
@@ -55,6 +57,8 @@ namespace Digiplane {
 
         // Returns a pointer to the world object.
         flecs::world* getWorld() { return &world; }
+
+        void init();
 
         // processCmdArg is used to parse command line arguments and set the desired application initialization behavior.
         // If the argument is not using the "-dp" prefix, it is ignored.

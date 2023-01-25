@@ -27,6 +27,11 @@ namespace Digiplane {
         }).add<Viewport>();;
     }
 
+    void ApplicationContext::init() {
+        // load target rendering backend here
+
+    }
+
     bool ApplicationContext::processCmdArg(const char* argv) {
         std::string arg = argv;
         if (arg == "-dp_vulkan") {
