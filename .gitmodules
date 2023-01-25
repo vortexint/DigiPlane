@@ -13,6 +13,6 @@
 [submodule "modules/openal-soft"]
 	path = modules/openal-soft
 	url = https://github.com/kcat/openal-soft.git
-[submodule "modules/MethaneKit"]
-	path = modules/MethaneKit
-	url = https://github.com/MethanePowered/MethaneKit.git
+[submodule "modules/DiligentCore"]
+	path = modules/DiligentCore
+	url = https://github.com/DiligentGraphics/DiligentCore.git

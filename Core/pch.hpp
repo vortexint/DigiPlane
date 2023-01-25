@@ -39,6 +39,11 @@
 #pragma warning(push, 0)
 
 // graphics
+#include "Graphics/GraphicsEngineD3D12/interface/EngineFactoryD3D12.h"
+#include "Graphics/GraphicsEngine/interface/RenderDevice.h"
+#include "Graphics/GraphicsEngine/interface/DeviceContext.h"
+#include "Graphics/GraphicsEngine/interface/SwapChain.h"
+#include "Common/interface/RefCntAutoPtr.hpp"
 
 // scene graph
 #include "flecs.h"

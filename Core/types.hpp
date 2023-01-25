@@ -38,9 +38,18 @@ struct Transform {
     Vector3_t scale;
 };
 
-// Velocity of an object
-struct Velocity {
+// Rigidbody (not implemented yet)
+struct Rigidbody {
     Vector3_t velocity;
+};
+
+struct Viewport {
+    int x, y, width, height;
+};
+
+struct Script {
+    std::string text;
+    lua_State* state;
 };
 
 }

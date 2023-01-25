@@ -16,5 +16,14 @@ int main(int argc, char** argv) {
 
     flecs::world* scene = context.getWorld();
 
+    flecs::entity cube = scene->entity("Cube").set<Digiplane::Transform>({
+        // vec3 position
+        {0,0,0},
+        // Quaternion rotation
+        {0,0,0,1},
+        // vec3 scale
+        {1,1,1}
+    });
+
     return 0;
 }

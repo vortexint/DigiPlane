@@ -6,8 +6,6 @@ namespace _DPCORE {
     // current digiplane version in major.minor format
     constexpr float version = DIGIPLANE_MAJOR + 0.1f * DIGIPLANE_MINOR;
     std::string_view systemLanguage;
-    lua_State* luaState;
-
     
 };
 
@@ -18,10 +16,15 @@ namespace Digiplane {
     ApplicationContext::ApplicationContext() {
         lua_State* L = luaL_newstate();
 
-        // register new entity named Viewport with transform component
-        auto viewport = world.entity("Viewport");
-        viewport.add<Transform>();
-        viewport.set<Transform>({0, 0, 0, 0, 0, 0, 0, 0, 0});
+        // add camera entity
+        flecs::entity camera = world.entity("Camera").set<Transform>({
+            // vec3 position
+            {7,-7,5},
+            // Quaternion rotation
+            {0.4840999f, -0.2005207f, 0.3259418f, 0.7868931f},
+            // vec3 scale
+            {1,1,1}
+        }).add<Viewport>();;
     }
 
     bool ApplicationContext::processCmdArg(const char* argv) {

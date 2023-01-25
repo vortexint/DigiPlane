@@ -21,10 +21,11 @@ include(graphics/CMakeLists.txt)
 
 target_include_directories(DigiPlaneCore PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/include
+${CMAKE_SOURCE_DIR}/modules/DiligentCore
 )
 
 target_precompile_headers(DigiPlaneCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.hpp)
 
 target_compile_definitions(DigiPlaneCore PRIVATE UNICODE)
 
-target_link_libraries(DigiPlaneCore flecs_static lua_static)  #openal entry point err
+target_link_libraries(DigiPlaneCore flecs_static lua_static Diligent-Common Diligent-GraphicsEngineD3D12-static)
