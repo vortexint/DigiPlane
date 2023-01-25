@@ -45,20 +45,33 @@ namespace Digiplane {
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
     class ApplicationContext {
     private:
-        static bool quit;
+        const char* m_title;
+        int m_width, m_height;
+        int m_glfwApiHint;
 
-        flecs::world world;
+        GLFWwindow* m_window;
 
-        Diligent::RefCntAutoPtr<Diligent::IPipelineState> m_pPSO; // Pipeline State Object used to render the scene
+        flecs::world m_world;
+
+        Diligent::RefCntAutoPtr<Diligent::IRenderDevice>  m_pDevice;           // Render device used to create all other graphics object
+        Diligent::RefCntAutoPtr<Diligent::IDeviceContext> m_pImmediateContext; // Immediate context is used to submit commands to the device
+        Diligent::RefCntAutoPtr<Diligent::ISwapChain>     m_pSwapChain;        // Swap chain is used to present the rendered image to the screen
+        Diligent::RefCntAutoPtr<Diligent::IPipelineState> m_pPSO;              // Pipeline State Object used to render the scene
+        Diligent::RENDER_DEVICE_TYPE                      m_DeviceType;        // Device type (Vulkan or D3D12)
         
     public:
-        ApplicationContext();
+        // initialize initParams explicity with Member initializer lists
+        ApplicationContext(const char* title, int width, int height, int glfwApiHint);
         ~ApplicationContext() {}
 
         // Returns a pointer to the world object.
-        flecs::world* getWorld() { return &world; }
+        flecs::world* getWorld() { return &m_world; }
 
-        void init();
+        int init();
+
+        void update();
+
+        bool shouldClose() {return glfwWindowShouldClose(m_window);}
 
         // processCmdArg is used to parse command line arguments and set the desired application initialization behavior.
         // If the argument is not using the "-dp" prefix, it is ignored.

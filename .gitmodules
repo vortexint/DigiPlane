@@ -16,3 +16,6 @@
 [submodule "modules/DiligentCore"]
 	path = modules/DiligentCore
 	url = https://github.com/DiligentGraphics/DiligentCore.git
+[submodule "modules/glfw"]
+	path = modules/glfw
+	url = https://github.com/glfw/glfw.git

@@ -18,14 +18,18 @@
 #include <unordered_map>
 #include <unordered_set>
 
-// We are using GLFW as a window manager of sorts.
-#define GLFW_INCLUDE_NONE
+#define GLFW_INCLUDE_NONE // We are using GLFW as a window manager of sorts.
+#define NOMINMAX // Windows headers define min/max as macros, which messes up std functions
 
 // platform specific setup & defines to avoid redundant #ifdef(s)
 #ifdef _WIN32 
-    #define GLFW_EXPOSE_NATIVE_WIN32
+    #include <Windows.h>
+    #include <crtdbg.h>
+    #define GLFW_EXPOSE_NATIVE_WIN32 1
 #elif __linux__
-    #define GLFW_EXPOSE_NATIVE_X11
+    #define GLFW_EXPOSE_NATIVE_X11 1
+#elif __APPLE__
+    #define GLFW_EXPOSE_NATIVE_COCOA 1
 #else
     #error Platform not supported.
 #endif
@@ -33,8 +37,6 @@
 #ifndef ENGINE_DLL
     #define ENGINE_DLL 0
 #endif
-
-#define NOMINMAX // Windows headers define min/max as macros, which messes up std functions
 
 #pragma warning(push, 0)
 
@@ -44,6 +46,9 @@
 #include "Graphics/GraphicsEngine/interface/DeviceContext.h"
 #include "Graphics/GraphicsEngine/interface/SwapChain.h"
 #include "Common/interface/RefCntAutoPtr.hpp"
+
+#include "GLFW/glfw3.h"
+#include "GLFW/glfw3native.h"
 
 // scene graph
 #include "flecs.h"

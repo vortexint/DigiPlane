@@ -5,7 +5,7 @@
 nk_context* ctx;
 
 int main(int argc, char** argv) {
-    Digiplane::ApplicationContext context;
+    Digiplane::ApplicationContext context("Digiplane Editor", 1280, 720, NULL);
     // for each argument
     for (int i = 1; i < argc; i++) {
         if (context.processCmdArg(argv[i]) == 1) {
@@ -24,6 +24,12 @@ int main(int argc, char** argv) {
         // vec3 scale
         {1,1,1}
     });
+
+    context.init();
+
+    while (!context.shouldClose()) {
+        context.update();
+    }
 
     return 0;
 }
