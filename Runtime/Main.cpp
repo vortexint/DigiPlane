@@ -5,7 +5,7 @@
 int main(int argc, char** argv) {
 
     // TODO: replace with loaded default parameters
-    Digiplane::ApplicationContext context("Runtime", 1280, 720, NULL);
+    Digiplane::ApplicationContext context("Runtime", 1280, 720);
 
     // for each argument
     for (int i = 1; i < argc; i++) {

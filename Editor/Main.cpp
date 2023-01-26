@@ -5,7 +5,7 @@
 nk_context* ctx;
 
 int main(int argc, char** argv) {
-    Digiplane::ApplicationContext context("Digiplane Editor", 1280, 720, NULL);
+    Digiplane::ApplicationContext context("Digiplane Editor", 1280, 720);
     // for each argument
     for (int i = 1; i < argc; i++) {
         if (context.processCmdArg(argv[i]) == 1) {

@@ -13,11 +13,10 @@ namespace Digiplane {
     /* Application Context definitions */ 
 
     // ApplicationContext constructor
-    ApplicationContext::ApplicationContext(const char* title, int width, int height, int glfwApiHint) {
+    ApplicationContext::ApplicationContext(const char* title, int width, int height) {
         m_title = title;
         m_width = width;
         m_height = height;
-        m_glfwApiHint = glfwApiHint;
 
         lua_State* L = luaL_newstate();
         luaL_openlibs(L);
@@ -31,12 +30,44 @@ namespace Digiplane {
         }).add<Viewport>();
     }
 
+    ApplicationContext::~ApplicationContext() {
+        if (m_pImmediateContext)
+            m_pImmediateContext->Flush();
+
+        m_pSwapChain        = nullptr;
+        m_pImmediateContext = nullptr;
+        m_pDevice           = nullptr;
+        
+        if (m_window)
+        {
+            glfwDestroyWindow(m_window);
+            glfwTerminate();
+        }
+    }
+
     int ApplicationContext::init() {
         if (!glfwInit())
             return -1;
 
-        m_window = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
-        // load target rendering backend here
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        // create window with "XD" added to the title
+        m_window = glfwCreateWindow(m_width, m_height, m_title.c_str(), nullptr, nullptr);
+
+        glfwMakeContextCurrent(m_window);
+        
+        #if PLATFORM_WIN32
+             Diligent::Win32NativeWindow Window{glfwGetWin32Window(m_window)};
+             if (m_DeviceType == Diligent::RENDER_DEVICE_TYPE_UNDEFINED)
+                m_DeviceType = Diligent::RENDER_DEVICE_TYPE_D3D12;
+        #endif
+        #if PLATFORM_LINUX
+            LinuxNativeWindow Window;
+            Window.WindowId = glfwGetX11Window(m_Window);
+            Window.pDisplay = glfwGetX11Display();
+            if (m_DeviceType == RENDER_DEVICE_TYPE_GL)
+                glfwMakeContextCurrent(m_Window);
+        #endif
+
         Diligent::SwapChainDesc SCDesc;
         switch (m_DeviceType)
         {
@@ -46,8 +77,7 @@ namespace Digiplane {
 
                 auto* pFactoryD3D12 = Diligent::GetEngineFactoryD3D12();
                 pFactoryD3D12->CreateDeviceAndContextsD3D12(EngineCI, &m_pDevice, &m_pImmediateContext);
-                //Diligent::Win32NativeWindow Window{hWnd};
-                //pFactoryD3D12->CreateSwapChainD3D12(m_pDevice, m_pImmediateContext, SCDesc, Diligent::FullScreenModeDesc{}, Window, &m_pSwapChain);
+                pFactoryD3D12->CreateSwapChainD3D12(m_pDevice, m_pImmediateContext, SCDesc, Diligent::FullScreenModeDesc{}, Window, &m_pSwapChain);
             }
             break;
         }

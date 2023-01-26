@@ -45,9 +45,8 @@ namespace Digiplane {
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
     class ApplicationContext {
     private:
-        const char* m_title;
+        std::string m_title;
         int m_width, m_height;
-        int m_glfwApiHint;
 
         GLFWwindow* m_window;
 
@@ -57,12 +56,12 @@ namespace Digiplane {
         Diligent::RefCntAutoPtr<Diligent::IDeviceContext> m_pImmediateContext; // Immediate context is used to submit commands to the device
         Diligent::RefCntAutoPtr<Diligent::ISwapChain>     m_pSwapChain;        // Swap chain is used to present the rendered image to the screen
         Diligent::RefCntAutoPtr<Diligent::IPipelineState> m_pPSO;              // Pipeline State Object used to render the scene
-        Diligent::RENDER_DEVICE_TYPE                      m_DeviceType;        // Device type (Vulkan or D3D12)
+        Diligent::RENDER_DEVICE_TYPE m_DeviceType = Diligent::RENDER_DEVICE_TYPE_UNDEFINED; // Device type: Vulkan or D3D12
         
     public:
         // initialize initParams explicity with Member initializer lists
-        ApplicationContext(const char* title, int width, int height, int glfwApiHint);
-        ~ApplicationContext() {}
+        ApplicationContext(const char* title, int width, int height);
+        ~ApplicationContext();
 
         // Returns a pointer to the world object.
         flecs::world* getWorld() { return &m_world; }
