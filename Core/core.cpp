@@ -58,15 +58,19 @@ namespace Digiplane {
         #if PLATFORM_WIN32
              Diligent::Win32NativeWindow Window{glfwGetWin32Window(m_window)};
              if (m_DeviceType == Diligent::RENDER_DEVICE_TYPE_UNDEFINED)
+                #if D3D12_SUPPORTED
                 m_DeviceType = Diligent::RENDER_DEVICE_TYPE_D3D12;
+                #elif VULKAN_SUPPORTED
+                m_DeviceType = Diligent::RENDER_DEVICE_TYPE_VULKAN;
+                #endif
         #endif
         #if PLATFORM_LINUX
             LinuxNativeWindow Window;
             Window.WindowId = glfwGetX11Window(m_Window);
             Window.pDisplay = glfwGetX11Display();
-            if (m_DeviceType == RENDER_DEVICE_TYPE_GL)
-                glfwMakeContextCurrent(m_Window);
         #endif
+
+        assert(m_DeviceType != Diligent::RENDER_DEVICE_TYPE_UNDEFINED);
 
         Diligent::SwapChainDesc SCDesc;
         switch (m_DeviceType)
