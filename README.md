@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/Icon.ico" alt="icon" width="128" height="128">
+  <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/resources/assets/Icon.ico" alt="icon" width="128" height="128">
   <p><h1>Digiplane</h1>Formerly project SenNight</p>
 </div>
 
