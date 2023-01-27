@@ -1,3 +1,3 @@
 #pragma once
 
-#include <Digiplane/core.hpp>
+#include <Digiplane/digiplane.hpp>

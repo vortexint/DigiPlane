@@ -1,6 +1,7 @@
 // Core.cpp
 #include "./pch.hpp"
-#include <Digiplane/core.hpp>
+#include "./include/Digiplane/digiplane.hpp"
+#include "./core.hpp"
 
 namespace _DPCORE {
     // current digiplane version in major.minor format
