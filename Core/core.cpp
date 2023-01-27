@@ -66,7 +66,7 @@ namespace Digiplane {
         #endif
         #if PLATFORM_LINUX
             LinuxNativeWindow Window;
-            Window.WindowId = glfwGetX11Window(m_Window);
+            Window.WindowId = glfwGetX11Window(m_window);
             Window.pDisplay = glfwGetX11Display();
         #endif
 
@@ -96,12 +96,12 @@ namespace Digiplane {
         std::string arg = argv;
         if (arg == "-dp_vulkan") {
             #ifndef VULKAN_SUPPORTED
-                return 1; // invalid digiplane command
+            return 1; // invalid digiplane command
             #endif
             m_DeviceType = Diligent::RENDER_DEVICE_TYPE_VULKAN;
         } else if (arg == "-dp_dx12") {
             #ifndef D3D12_SUPPORTED
-                return 1; // invalid digiplane command
+            return 1; // invalid digiplane command
             #endif
             m_DeviceType = Diligent::RENDER_DEVICE_TYPE_D3D12;
         }
