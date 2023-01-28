@@ -1,10 +1,7 @@
-# DigiPlane <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/resources/assets/Icon.ico" alt="icon" width="128" height="128" align="right" valign="middle">
+# DigiPlane <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/resources/assets/Icon.ico" alt="icon" width="200" height="200" align="right" valign="middle">
+![Build](https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/cmake.yml/badge.svg)
 ###### Formerly project SenNight
-<img src="https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/cmake.yml/badge.svg" alt="icon">
-
-## Introduction
-
-Digiplane is a game framework that makes it easy to create high-quality 2D or 3D games. It provides simple high-level and low-level access to core features such as using HLSL/GLSL shaders, creating and managing scenes, and uses a entity-component system. Digiplane also supports Linux and Windows.
+**DigiPlane is a comprehensive game engine that simplifies the development of 2D and 3D games. It incorporates features such as HLSL/GLSL shader support, scene management, and an entity-component system. DigiPlane is also compatible with both Linux and Windows platforms.**
 
 If you would like to try out the framework, check out the [tutorial](https://digiplane.readthedocs.io/en/latest/tutorial.html).
 
@@ -25,6 +22,7 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 
 ## Building (Nightly build)
 ### Dependencies:
+
 1. CMake Build System
 2. Visual Studio (MSVC) / MinGW-w64 / g++
 3. Vulkan development SDK packages
