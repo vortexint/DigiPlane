@@ -3,6 +3,8 @@
   <p><h1>Digiplane</h1>Formerly project SenNight</p>
 </div>
 
+![workflow](https://github.com/<OWNER>/DigiPlane/actions/workflows/cmake.yml/badge.svg)
+
 ## Introduction
 
 Digiplane is a game framework that makes it easy to create high-quality 2D or 3D games. It provides simple high-level and low-level access to core features such as using HLSL/GLSL shaders, creating and managing scenes, and uses a entity-component system. Digiplane also supports Linux and Windows.
