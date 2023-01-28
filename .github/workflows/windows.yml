@@ -1,4 +1,4 @@
-name: CMake
+name: win-build
 
 on:
   push:
@@ -10,15 +10,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
-jobs:
-  #prechecks:
-  #  runs-on: windows-latest
-  #  steps:
-  #  - name: Clone repository
-  #    uses: actions/checkout@v3
-  #    with:
-  #      submodules: recursive 
-        
+jobs:        
   build:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
