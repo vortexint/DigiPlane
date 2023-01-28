@@ -1,5 +1,5 @@
 # DigiPlane <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/resources/assets/Icon.ico" alt="icon" width="200" height="200" align="right" valign="middle">
-![Build](https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/cmake.yml/badge.svg)
+![Build](https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/windows.yml/badge.svg)
 ###### Formerly project SenNight
 **DigiPlane is a comprehensive game engine that simplifies the development of 2D and 3D games. It incorporates features such as HLSL/GLSL shader support, scene management, and an entity-component system. DigiPlane is also compatible with both Linux and Windows platforms.**
 
