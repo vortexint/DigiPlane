@@ -5,8 +5,9 @@
 nk_context* ctx;
 
 int main(int argc, char** argv) {
-    Digiplane::ApplicationContext context("Digiplane Editor", 1280, 720);
-    // for each argument
+    // 
+    Digiplane::ApplicationContext context(("Digiplane " + std::to_string(DIGIPLANE_MAJOR) + "." +
+                                                          std::to_string(DIGIPLANE_MINOR) + " Editor").c_str(), 1280, 720);
     for (int i = 1; i < argc; i++) {
         if (context.processCmdArg(argv[i]) == 1) {
             std::cout << "Bad command\n";
@@ -25,9 +26,9 @@ int main(int argc, char** argv) {
         {1,1,1}
     });
 
-    context.init();
+    context.init(); // initialize the application context
 
-    while (!context.shouldClose()) {
+    while (!context.shouldQuit()) {
         context.update();
     }
 

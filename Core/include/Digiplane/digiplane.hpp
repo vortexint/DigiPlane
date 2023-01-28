@@ -38,8 +38,7 @@
 #include "../plugins/imgui_impl.hpp"
 #endif
 
-// The Digiplane namespace is the root namespace for all Digiplane classes and functions.
-// definitions at core.cpp
+// The Digiplane namespace contains classes and functions that are available to the users.
 namespace Digiplane {
 
     // The ApplicationContext is a container for managing and storing application-level objects and resources.
@@ -70,7 +69,7 @@ namespace Digiplane {
 
         void update();
 
-        bool shouldClose() {return glfwWindowShouldClose(m_window);}
+        bool shouldQuit() {return glfwWindowShouldClose(m_window);}
 
         // processCmdArg is used to parse command line arguments and set the desired application initialization behavior.
         // If the argument is not using the "-dp" prefix, it is ignored.
@@ -81,7 +80,7 @@ namespace Digiplane {
     /* Core interfacing */
 
     // Returns a reference the version of the Digiplane library as a float that can be used for version checking.
-    const float& getVersion();
+    const float getVersion();
 
 
 } // DigiPlane

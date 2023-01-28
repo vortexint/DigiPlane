@@ -3,13 +3,6 @@
 #include "./include/Digiplane/digiplane.hpp"
 #include "./core.hpp"
 
-namespace _DPCORE {
-    // current digiplane version in major.minor format
-    constexpr float version = DIGIPLANE_MAJOR + 0.1f * DIGIPLANE_MINOR;
-    std::string_view systemLanguage;
-    
-};
-
 namespace Digiplane {
     /* Application Context definitions */ 
 
@@ -112,6 +105,6 @@ namespace Digiplane {
 
     /* Core interfacing definitions */
 
-    const float& getVersion() {return _DPCORE::version;}
+    const float getVersion() {return _DPCORE::version;}
 
 }
