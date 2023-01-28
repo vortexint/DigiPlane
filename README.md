@@ -1,9 +1,6 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/resources/assets/Icon.ico" alt="icon" width="128" height="128">
-  <p><h1>Digiplane</h1>Formerly project SenNight</p>
-</div>
-
-![workflow](https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/cmake.yml/badge.svg)
+# DigiPlane <img src="https://raw.githubusercontent.com/vortexdevsoftware/DigiPlane/master/Editor/resources/assets/Icon.ico" alt="icon" width="128" height="128" align="right" valign="middle">
+###### Formerly project SenNight
+<img src="https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/cmake.yml/badge.svg" alt="icon">
 
 ## Introduction
 
