@@ -3,7 +3,7 @@
   <p><h1>Digiplane</h1>Formerly project SenNight</p>
 </div>
 
-![workflow](https://github.com/<OWNER>/DigiPlane/actions/workflows/cmake.yml/badge.svg)
+![workflow](https://github.com/vortexdevsoftware/DigiPlane/actions/workflows/cmake.yml/badge.svg)
 
 ## Introduction
 
