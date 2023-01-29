@@ -39,6 +39,17 @@ namespace Digiplane {
         }
     }
 
+    void ApplicationContext::Draw() {
+        Diligent::ITextureView* pRTV = m_pSwapChain->GetCurrentBackBufferRTV();
+        m_pImmediateContext->SetRenderTargets(1, &pRTV, nullptr, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
+
+        const float ClearColor[4] = {};
+        m_pImmediateContext->ClearRenderTarget(pRTV, ClearColor, Diligent::RESOURCE_STATE_TRANSITION_MODE_VERIFY);
+
+        m_pImmediateContext->Flush();
+        m_pSwapChain->Present();
+    }
+
     int ApplicationContext::init() {
         if (!glfwInit())
             return -1;
@@ -88,6 +99,12 @@ namespace Digiplane {
             return;
             
         glfwPollEvents();
+
+        int w, h;
+        glfwGetFramebufferSize(m_window, &w, &h);
+        if (w > 0 && h > 0)
+            this->Draw();
+
     }
 
     bool ApplicationContext::processCmdArg(const char* argv) {

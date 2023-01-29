@@ -56,6 +56,8 @@ namespace Digiplane {
         Diligent::RefCntAutoPtr<Diligent::ISwapChain>     m_pSwapChain;        // Swap chain is used to present the rendered image to the screen
         Diligent::RefCntAutoPtr<Diligent::IPipelineState> m_pPSO;              // Pipeline State Object used to render the scene
         Diligent::RENDER_DEVICE_TYPE m_DeviceType = Diligent::RENDER_DEVICE_TYPE_UNDEFINED; // Device type: Vulkan or D3D12
+
+        void Draw();
         
     public:
         // initialize initParams explicity with Member initializer lists
