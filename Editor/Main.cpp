@@ -14,10 +14,10 @@ int main(int argc, char** argv) {
             return 1; // invalid digiplane command
         }
     }
+    
+    flecs::world* sceneGraph = context.getWorld();
 
-    flecs::world* scene = context.getWorld();
-
-    flecs::entity cube = scene->entity("Cube").set<Digiplane::Transform>({
+    flecs::entity cube = sceneGraph->entity("Cube").set<Digiplane::Transform>({
         // vec3 position
         {0,0,0},
         // Quaternion rotation

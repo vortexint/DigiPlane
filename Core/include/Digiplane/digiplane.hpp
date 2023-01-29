@@ -47,9 +47,9 @@ namespace Digiplane {
         std::string m_title;
         int m_width, m_height;
 
-        GLFWwindow* m_window;
-
         flecs::world m_world;
+
+        GLFWwindow* m_window;
 
         Diligent::RefCntAutoPtr<Diligent::IRenderDevice>  m_pDevice;           // Render device used to create all other graphics object
         Diligent::RefCntAutoPtr<Diligent::IDeviceContext> m_pImmediateContext; // Immediate context is used to submit commands to the device
@@ -61,6 +61,11 @@ namespace Digiplane {
         // initialize initParams explicity with Member initializer lists
         ApplicationContext(const char* title, int width, int height);
         ~ApplicationContext();
+
+        Diligent::IEngineFactory* GetEngineFactory() {return m_pDevice->GetEngineFactory();}
+        Diligent::IRenderDevice*  GetDevice()        {return m_pDevice;}
+        Diligent::IDeviceContext* GetContext()       {return m_pImmediateContext;}
+        Diligent::ISwapChain*     GetSwapChain()     {return m_pSwapChain;}
 
         // Returns a pointer to the world object.
         flecs::world* getWorld() { return &m_world; }

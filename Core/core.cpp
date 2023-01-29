@@ -83,6 +83,10 @@ namespace Digiplane {
     }
 
     void ApplicationContext::update() {
+
+        if (glfwWindowShouldClose(m_window))
+            return;
+            
         glfwPollEvents();
     }
 

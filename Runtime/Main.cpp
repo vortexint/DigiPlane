@@ -15,8 +15,13 @@ int main(int argc, char** argv) {
         }
     }
 
-    flecs::world* scene = context.getWorld();
+    //flecs::world* sceneGraph = context.getWorld();
     
+    context.init(); // initialize the application context
+
+    while (!context.shouldQuit()) {
+        context.update();
+    }
 
     return 0;
 }
