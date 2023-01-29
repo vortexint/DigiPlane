@@ -58,6 +58,8 @@ namespace Digiplane {
         Diligent::RENDER_DEVICE_TYPE m_DeviceType = Diligent::RENDER_DEVICE_TYPE_UNDEFINED; // Device type: Vulkan or D3D12
 
         void Draw();
+
+        static void GLFWResizeCallback(GLFWwindow* window, int width, int height);
         
     public:
         // initialize initParams explicity with Member initializer lists
@@ -70,7 +72,7 @@ namespace Digiplane {
         Diligent::ISwapChain*     GetSwapChain()     {return m_pSwapChain;}
 
         // Returns a pointer to the world object.
-        flecs::world* getWorld() { return &m_world; }
+        flecs::world* getWorld() {return &m_world;}
 
         int init();
 

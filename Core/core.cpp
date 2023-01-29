@@ -4,9 +4,29 @@
 #include "./core.hpp"
 
 namespace Digiplane {
-    /* Application Context definitions */ 
 
-    // ApplicationContext constructor
+    //
+    // Application Context definitions 
+    //
+
+    void ApplicationContext::GLFWResizeCallback(GLFWwindow* wnd, int w, int h)
+    {
+        auto* pSelf = static_cast<ApplicationContext*>(glfwGetWindowUserPointer(wnd));
+        if (pSelf->m_pSwapChain != nullptr)
+            pSelf->m_pSwapChain->Resize(static_cast<uint32_t>(w), static_cast<uint32_t>(h));
+    }
+
+    void ApplicationContext::Draw() {
+        Diligent::ITextureView* pRTV = m_pSwapChain->GetCurrentBackBufferRTV();
+        m_pImmediateContext->SetRenderTargets(1, &pRTV, nullptr, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
+
+        const float ClearColor[4] = {};
+        m_pImmediateContext->ClearRenderTarget(pRTV, ClearColor, Diligent::RESOURCE_STATE_TRANSITION_MODE_VERIFY);
+
+        m_pImmediateContext->Flush();
+        m_pSwapChain->Present();
+    }
+
     ApplicationContext::ApplicationContext(const char* title, int width, int height) {
         m_title = title;
         m_width = width;
@@ -39,17 +59,6 @@ namespace Digiplane {
         }
     }
 
-    void ApplicationContext::Draw() {
-        Diligent::ITextureView* pRTV = m_pSwapChain->GetCurrentBackBufferRTV();
-        m_pImmediateContext->SetRenderTargets(1, &pRTV, nullptr, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
-
-        const float ClearColor[4] = {};
-        m_pImmediateContext->ClearRenderTarget(pRTV, ClearColor, Diligent::RESOURCE_STATE_TRANSITION_MODE_VERIFY);
-
-        m_pImmediateContext->Flush();
-        m_pSwapChain->Present();
-    }
-
     int ApplicationContext::init() {
         if (!glfwInit())
             return -1;
@@ -59,6 +68,11 @@ namespace Digiplane {
         m_window = glfwCreateWindow(m_width, m_height, m_title.c_str(), nullptr, nullptr);
 
         glfwMakeContextCurrent(m_window);
+
+        glfwSetWindowUserPointer(m_window, this);
+        glfwSetFramebufferSizeCallback(m_window, &GLFWResizeCallback);
+        glfwSetWindowSizeLimits(m_window, 320, 240, GLFW_DONT_CARE, GLFW_DONT_CARE);
+
         
         #if PLATFORM_WIN32
              Diligent::Win32NativeWindow Window{glfwGetWin32Window(m_window)};
