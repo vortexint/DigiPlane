@@ -14,7 +14,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   message(STATUS "MSVC detected, adding compile options")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup") # Use main instead of WinMain
-    if (CMAKE_BUILD_TYPE MATCHES "Debug")
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         message(STATUS "Debug build detected, adding compile options")
         add_compile_options(/W4 /Od /Zi /EHsc)
     else()

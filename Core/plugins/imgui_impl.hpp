@@ -7,4 +7,6 @@
 
 #if defined(DIGIPLANE_IMGUI_PLUGIN)
 
+#pragma message("Compiling Digiplane ImGui Plugin")
+
 #endif // DIGIPLANE_IMGUI_PLUGIN
