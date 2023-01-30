@@ -24,7 +24,7 @@
 // platform specific setup & defines to avoid redundant #ifdef(s)
 #ifdef _WIN32 
     #include <Windows.h>
-    #include <crtdbg.h>
+    #include <crtdbg.h> // memory leak detection
     #define GLFW_EXPOSE_NATIVE_WIN32 1
 #elif __linux__
     #define GLFW_EXPOSE_NATIVE_X11 1

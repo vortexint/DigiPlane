@@ -18,9 +18,11 @@ namespace Digiplane {
 
     void ApplicationContext::Draw() {
         Diligent::ITextureView* pRTV = m_pSwapChain->GetCurrentBackBufferRTV();
-        m_pImmediateContext->SetRenderTargets(1, &pRTV, nullptr, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
+        Diligent::ITextureView* pDSV = m_pSwapChain->GetDepthBufferDSV();
+        m_pImmediateContext->SetRenderTargets(1, &pRTV, pDSV, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
 
-        const float ClearColor[4] = {};
+        // Clear the back buffer
+        const float ClearColor[4] = {0.01f, 0.01f, 0.01f, 1.0f};
         m_pImmediateContext->ClearRenderTarget(pRTV, ClearColor, Diligent::RESOURCE_STATE_TRANSITION_MODE_VERIFY);
 
         m_pImmediateContext->Flush();
@@ -64,7 +66,6 @@ namespace Digiplane {
             return -1;
 
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-        // create window with "XD" added to the title
         m_window = glfwCreateWindow(m_width, m_height, m_title.c_str(), nullptr, nullptr);
 
         glfwMakeContextCurrent(m_window);
@@ -113,6 +114,11 @@ namespace Digiplane {
             return;
             
         glfwPollEvents();
+
+        double xpos, ypos;
+        glfwGetCursorPos(m_window, &xpos, &ypos);
+        // set title to position
+        glfwSetWindowTitle(m_window, (std::to_string(xpos) + " " + std::to_string(ypos)).c_str());
 
         int w, h;
         glfwGetFramebufferSize(m_window, &w, &h);
