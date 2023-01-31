@@ -115,9 +115,6 @@ namespace Digiplane {
             
         glfwPollEvents();
 
-        double xpos, ypos;
-        glfwGetCursorPos(m_window, &xpos, &ypos);
-        
         int w, h;
         glfwGetFramebufferSize(m_window, &w, &h);
         if (w > 0 && h > 0)
