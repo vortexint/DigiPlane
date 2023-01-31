@@ -1,12 +1,9 @@
 #pragma once
-
+#if defined(DIGIPLANE_NK_PLUGIN)
 /* 
     This file will compile Digiplane's implementation of Nuklear as an integrated part of your application,
     you still need Nuklear itself. See https://github.com/Immediate-Mode-UI/Nuklear
 */
-
-#if defined(DIGIPLANE_NK_PLUGIN)
-
 #pragma message("Compiling Digiplane Nuklear Plugin")
 
 namespace Diligent

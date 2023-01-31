@@ -6,6 +6,7 @@ add_library(DigiPlaneCore)
 
 target_sources(DigiPlaneCore PRIVATE
 ${CMAKE_CURRENT_SOURCE_DIR}/core.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/plugins/nuklear_impl.cpp
 # ... 
 )
 

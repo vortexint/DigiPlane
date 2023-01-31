@@ -117,9 +117,7 @@ namespace Digiplane {
 
         double xpos, ypos;
         glfwGetCursorPos(m_window, &xpos, &ypos);
-        // set title to position
-        glfwSetWindowTitle(m_window, (std::to_string(xpos) + " " + std::to_string(ypos)).c_str());
-
+        
         int w, h;
         glfwGetFramebufferSize(m_window, &w, &h);
         if (w > 0 && h > 0)

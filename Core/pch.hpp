@@ -45,6 +45,10 @@
 #include "Graphics/GraphicsEngine/interface/RenderDevice.h"
 #include "Graphics/GraphicsEngine/interface/DeviceContext.h"
 #include "Graphics/GraphicsEngine/interface/SwapChain.h"
+
+#include "Graphics/GraphicsTools/interface/CommonlyUsedStates.h"
+#include "Graphics/GraphicsTools/interface/MapHelper.hpp"
+
 #include "Common/interface/BasicMath.hpp"
 #include "Common/interface/RefCntAutoPtr.hpp"
 
