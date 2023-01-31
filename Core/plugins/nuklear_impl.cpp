@@ -1,14 +1,8 @@
 #if defined(DIGIPLANE_NK_PLUGIN)
 #include <cstdarg>
-
-// If defined it will include header `<stdint.h>` for fixed sized types otherwise nuklear tries to select the correct type. If that fails it will throw a compiler error and you have to select the correct types yourself.
 #define NK_INCLUDE_FIXED_TYPES
-
-// If defined it will include header `<stdio.h>` and provide additional functions depending on file loading.
 #define NK_INCLUDE_STANDARD_IO
 #define NK_INCLUDE_STANDARD_VARARGS
-
-// If defined it will include header `<stdlib.h>` and provide additional functions to use this library without caring for memory allocation control and therefore ease memory management.
 #define NK_INCLUDE_DEFAULT_ALLOCATOR
 #define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
 #define NK_INCLUDE_FONT_BAKING
