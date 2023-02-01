@@ -1,5 +1,3 @@
-#define DIGIPLANE_NK_PLUGIN
-
 #include "./Editor.hpp"
 
 nk_context* ctx;
@@ -27,6 +25,8 @@ int main(int argc, char** argv) {
     //});
 
     context.init(); // initialize the application context
+
+    /* Editor Main Loop */
 
     while (!context.shouldQuit()) {
         context.update();

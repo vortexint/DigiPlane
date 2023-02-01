@@ -120,6 +120,10 @@ namespace Digiplane {
         constexpr uint32_t NuklearMaxIBSize = 128 * 1024;
         m_pNkDlgCtx = nk_diligent_init(m_pDevice, SCDesc.Width, SCDesc.Height, SCDesc.ColorBufferFormat, SCDesc.DepthBufferFormat, NuklearMaxVBSize, NuklearMaxIBSize);
         m_pNkCtx    = nk_diligent_get_nk_ctx(m_pNkDlgCtx);
+        nk_font_atlas* atlas = nullptr;
+        nk_diligent_font_stash_begin(m_pNkDlgCtx, &atlas);
+        nk_diligent_font_stash_end(m_pNkDlgCtx, m_pImmediateContext);
+        set_style(m_pNkCtx, THEME_DARK);
         #endif
 
         return 0;
