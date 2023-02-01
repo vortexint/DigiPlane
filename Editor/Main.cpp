@@ -15,16 +15,16 @@ int main(int argc, char** argv) {
         }
     }
     
-    flecs::world* sceneGraph = context.getWorld();
-
-    flecs::entity cube = sceneGraph->entity("Cube").set<Digiplane::Transform>({
-        // vec3 position
-        {0,0,0},
-        // Quaternion rotation
-        {0,0,0,1},
-        // vec3 scale
-        {1,1,1}
-    });
+    //flecs::world* sceneGraph = context.getWorld();
+//
+    //flecs::entity cube = sceneGraph->entity("Cube").set<Digiplane::Transform>({
+    //    // vec3 position
+    //    {0,0,0},
+    //    // Quaternion rotation
+    //    {0,0,0,1},
+    //    // vec3 scale
+    //    {1,1,1}
+    //});
 
     context.init(); // initialize the application context
 

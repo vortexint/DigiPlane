@@ -47,9 +47,14 @@ namespace Digiplane {
         std::string m_title;
         int m_width, m_height;
 
-        flecs::world m_world;
-
         GLFWwindow* m_window;
+
+        #if defined(DIGIPLANE_NK_PLUGIN)
+        nk_diligent_context* m_pNkDlgCtx = nullptr;
+        nk_context*          m_pNkCtx    = nullptr;
+        #endif
+
+        flecs::world m_world;
 
         Diligent::RefCntAutoPtr<Diligent::IRenderDevice>  m_pDevice;           // Render device used to create all other graphics object
         Diligent::RefCntAutoPtr<Diligent::IDeviceContext> m_pImmediateContext; // Immediate context is used to submit commands to the device

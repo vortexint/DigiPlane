@@ -9,11 +9,13 @@ namespace Digiplane {
     // Application Context definitions 
     //
 
-    void ApplicationContext::GLFWResizeCallback(GLFWwindow* wnd, int w, int h)
-    {
+    void ApplicationContext::GLFWResizeCallback(GLFWwindow* wnd, int w, int h) {
         auto* pSelf = static_cast<ApplicationContext*>(glfwGetWindowUserPointer(wnd));
         if (pSelf->m_pSwapChain != nullptr)
             pSelf->m_pSwapChain->Resize(static_cast<uint32_t>(w), static_cast<uint32_t>(h));
+        #if defined(DIGIPLANE_NK_PLUGIN)
+        nk_diligent_resize(m_pNkDlgCtx, m_pImmediateContext, static_cast<uint32_t>(w), static_cast<uint32_t>(h));
+        #endif
     }
 
     void ApplicationContext::Draw() {
@@ -27,6 +29,10 @@ namespace Digiplane {
 
         m_pImmediateContext->Flush();
         m_pSwapChain->Present();
+
+        #if defined(DIGIPLANE_NK_PLUGIN)
+        nk_diligent_render(m_pNkDlgCtx, m_pImmediateContext, NK_ANTI_ALIASING_ON);
+        #endif
     }
 
     ApplicationContext::ApplicationContext(const char* title, int width, int height) {
@@ -53,6 +59,10 @@ namespace Digiplane {
         m_pSwapChain        = nullptr;
         m_pImmediateContext = nullptr;
         m_pDevice           = nullptr;
+
+        #if defined(DIGIPLANE_NK_PLUGIN)
+        nk_diligent_shutdown(m_pNkDlgCtx);
+        #endif
         
         if (m_window)
         {
@@ -73,7 +83,6 @@ namespace Digiplane {
         glfwSetWindowUserPointer(m_window, this);
         glfwSetFramebufferSizeCallback(m_window, &GLFWResizeCallback);
         glfwSetWindowSizeLimits(m_window, 320, 240, GLFW_DONT_CARE, GLFW_DONT_CARE);
-
         
         #if PLATFORM_WIN32
              Diligent::Win32NativeWindow Window{glfwGetWin32Window(m_window)};
@@ -105,6 +114,14 @@ namespace Digiplane {
             }
             break;
         }
+
+        #if defined(DIGIPLANE_NK_PLUGIN)
+        constexpr uint32_t NuklearMaxVBSize = 512 * 1024;
+        constexpr uint32_t NuklearMaxIBSize = 128 * 1024;
+        m_pNkDlgCtx = nk_diligent_init(m_pDevice, SCDesc.Width, SCDesc.Height, SCDesc.ColorBufferFormat, SCDesc.DepthBufferFormat, NuklearMaxVBSize, NuklearMaxIBSize);
+        m_pNkCtx    = nk_diligent_get_nk_ctx(m_pNkDlgCtx);
+        #endif
+
         return 0;
     }
 
