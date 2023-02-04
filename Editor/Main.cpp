@@ -1,7 +1,5 @@
 #include "./Editor.hpp"
 
-nk_context* ctx;
-
 int main(int argc, char** argv) {
     // 
     Digiplane::ApplicationContext context(("Digiplane " + std::to_string(DIGIPLANE_MAJOR) + "." +
