@@ -18,7 +18,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#define GLFW_INCLUDE_NONE // We are using GLFW as a window manager of sorts.
+#define GLFW_INCLUDE_NONE // We are using GLFW as a window manager.
 #define NOMINMAX // Windows headers define min/max as macros, which messes up std functions
 
 // platform specific setup & defines to avoid redundant #ifdef(s)
