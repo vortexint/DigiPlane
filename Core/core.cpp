@@ -115,7 +115,6 @@ namespace Digiplane {
             break;
         }
 
-        #if defined(DIGIPLANE_NK_PLUGIN)
         constexpr uint32_t NuklearMaxVBSize = 512 * 1024;
         constexpr uint32_t NuklearMaxIBSize = 128 * 1024;
         m_pNkDlgCtx = nk_diligent_init(m_pDevice, SCDesc.Width, SCDesc.Height, SCDesc.ColorBufferFormat, SCDesc.DepthBufferFormat, NuklearMaxVBSize, NuklearMaxIBSize);
@@ -124,7 +123,6 @@ namespace Digiplane {
         nk_diligent_font_stash_begin(m_pNkDlgCtx, &atlas);
         nk_diligent_font_stash_end(m_pNkDlgCtx, m_pImmediateContext);
         set_style(m_pNkCtx, THEME_DARK);
-        #endif
 
         return 0;
     }

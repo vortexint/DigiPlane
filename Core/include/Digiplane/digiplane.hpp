@@ -11,7 +11,6 @@
 
 /* Plugins */
 
-#if defined(DIGIPLANE_NK_PLUGIN)
 #define NK_INCLUDE_FIXED_TYPES
 #define NK_INCLUDE_STANDARD_IO
 #define NK_INCLUDE_STANDARD_VARARGS
@@ -26,7 +25,6 @@
     #error "Unable to include "nuklear.h", please make sure it is in your include path."
 #endif
 #include "../plugins/nuklear_impl.hpp"
-#endif
 
 #if defined(DIGIPLANE_IMGUI_PLUGIN)
 #pragma warning(push, 0)
