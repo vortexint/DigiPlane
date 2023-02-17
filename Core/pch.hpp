@@ -21,6 +21,14 @@
 #define GLFW_INCLUDE_NONE // We are using GLFW as a window manager.
 #define NOMINMAX // Windows headers define min/max as macros, which messes up std functions
 
+#define NK_INCLUDE_FIXED_TYPES
+#define NK_INCLUDE_STANDARD_IO
+#define NK_INCLUDE_STANDARD_VARARGS
+#define NK_INCLUDE_DEFAULT_ALLOCATOR
+#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
+#define NK_INCLUDE_FONT_BAKING
+#define NK_INCLUDE_DEFAULT_FONT
+
 // platform specific setup & defines to avoid redundant #ifdef(s)
 #ifdef _WIN32 
     #include <Windows.h>
@@ -54,6 +62,10 @@
 
 #include "GLFW/glfw3.h"
 #include "GLFW/glfw3native.h"
+
+// interface
+#include "nuklear.h"
+#include "graphics/nuklear_impl.hpp"
 
 // scene graph
 #include "flecs.h"

@@ -122,7 +122,7 @@ namespace Digiplane {
         nk_font_atlas* atlas = nullptr;
         nk_diligent_font_stash_begin(m_pNkDlgCtx, &atlas);
         nk_diligent_font_stash_end(m_pNkDlgCtx, m_pImmediateContext);
-        set_style(m_pNkCtx, THEME_DARK);
+        //set_style(m_pNkCtx, THEME_DARK);
 
         return 0;
     }

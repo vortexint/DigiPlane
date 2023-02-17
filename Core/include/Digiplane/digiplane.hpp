@@ -11,21 +11,6 @@
 
 /* Plugins */
 
-#define NK_INCLUDE_FIXED_TYPES
-#define NK_INCLUDE_STANDARD_IO
-#define NK_INCLUDE_STANDARD_VARARGS
-#define NK_INCLUDE_DEFAULT_ALLOCATOR
-#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
-#define NK_INCLUDE_FONT_BAKING
-#define NK_INCLUDE_DEFAULT_FONT
-#pragma warning(push, 0)
-#include "nuklear.h"
-#pragma warning(pop)
-#ifndef NK_NUKLEAR_H_
-    #error "Unable to include "nuklear.h", please make sure it is in your include path."
-#endif
-#include "../plugins/nuklear_impl.hpp"
-
 #if defined(DIGIPLANE_IMGUI_PLUGIN)
 #pragma warning(push, 0)
 //#include "imgui.h"
@@ -47,10 +32,8 @@ namespace Digiplane {
 
         GLFWwindow* m_window;
 
-        #if defined(DIGIPLANE_NK_PLUGIN)
         nk_diligent_context* m_pNkDlgCtx = nullptr;
         nk_context*          m_pNkCtx    = nullptr;
-        #endif
 
         flecs::world m_world;
 

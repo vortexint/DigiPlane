@@ -1,10 +1,4 @@
 #pragma once
-#if defined(DIGIPLANE_NK_PLUGIN)
-/* 
-    This file will compile Digiplane's implementation of Nuklear as an integrated part of your application,
-    you still need Nuklear itself. See https://github.com/Immediate-Mode-UI/Nuklear
-*/
-#pragma message("Compiling Digiplane Nuklear Plugin")
 
 namespace Diligent
 {
@@ -41,5 +35,3 @@ NK_API void nk_diligent_resize(struct nk_diligent_context* nk_dlg_ctx,
                                unsigned int                height);
 
 NK_API void nk_diligent_shutdown(struct nk_diligent_context* nk_dlg_ctx);
-
-#endif // DIGIPLANE_NK_PLUGIN
