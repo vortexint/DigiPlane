@@ -1,4 +1,3 @@
-#if defined(DIGIPLANE_NK_PLUGIN)
 #include <cstdarg>
 #define NK_INCLUDE_FIXED_TYPES
 #define NK_INCLUDE_STANDARD_IO
@@ -302,7 +301,7 @@ nk_diligent_render(struct nk_diligent_context* nk_dlg_ctx,
         config.circle_segment_count = 22;
         config.curve_segment_count  = 22;
         config.arc_segment_count    = 22;
-        config.null                 = nk_dlg_ctx->null;
+        //config.null                 = nk_dlg_ctx->null;
 
         // setup buffers to load vertices and elements
         struct nk_buffer vbuf, ibuf;
@@ -412,4 +411,3 @@ void nk_diligent_shutdown(nk_diligent_context* nk_dlg_ctx)
         delete nk_dlg_ctx;
     }
 }
-#endif
