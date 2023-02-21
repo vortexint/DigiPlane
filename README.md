@@ -10,7 +10,7 @@ If you would like to try out the framework, check out the [tutorial](https://dig
 - Entity-component system ([flecs](https://github.com/SanderMertens/flecs)) - Create your game objects in a component-based way.
 - Scene management - Make your game logic modular by creating scenes that contain your entities and components.
 - Linux and Windows support - The framework is cross-platform, so you can easily build your games to both platforms.
-- Version agnostic implementation of popular immediate mode GUI libraries: [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear) and [Dear ImGui](https://github.com/ocornut/imgui) are included as optional plugins.
+- Version agnostic implementation of popular immediate mode GUI libraries: [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear) and [Dear ImGui](https://github.com/ocornut/imgui)
 
 ## Getting Started
 
