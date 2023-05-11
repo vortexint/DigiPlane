@@ -33,7 +33,7 @@ add_subdirectory(modules/flecs)
 #add_subdirectory(modules/openal-soft)
 add_subdirectory(modules/glfw)
 add_subdirectory(modules/DiligentCore)
-add_subdirectory(modules/lua)
+add_subdirectory(modules/Lua)
 # intermediary
 add_subdirectory(Core)
 # final
