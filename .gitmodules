@@ -22,3 +22,6 @@
 [submodule "modules/DiligentTools"]
 	path = modules/DiligentTools
 	url = https://github.com/DiligentGraphics/DiligentTools.git
+[submodule "modules/enet"]
+	path = modules/enet
+	url = https://github.com/zpl-c/enet.git
