@@ -4,9 +4,6 @@
 [submodule "modules/yaml-cpp"]
 	path = modules/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp.git
-[submodule "modules/asio"]
-	path = modules/asio
-	url = https://github.com/boostorg/asio.git
 [submodule "modules/Lua"]
 	path = modules/Lua
 	url = https://github.com/walterschell/Lua.git
